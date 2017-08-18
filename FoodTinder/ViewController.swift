@@ -10,32 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    struct YelpData : Codable{
-        var businesses : [businesses]
 
-    }
-    struct YelpDataNo{
-        var businesses : [businesses]
-        
-    }
-    struct region : Codable{
-        var center: center
-    }
-    struct center : Codable{
-        var latitude:Float
-        var longitude:Float
-    }
-    
-    struct businesses : Codable {
-        var name:String
-        var rating: Float
-        var price: String
-    }
-    struct businessesNo {
-        var name:String
-        var rating: Float
-        var price: String
-    }
     var buisnessArray = [businesses]()
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -46,11 +21,22 @@ class ViewController: UIViewController {
         var yelpData = YelpData(businesses: buisnessArray)
         requestURL { data in
             yelpData = data
-            print(yelpData)
+            for i in 0..<data.businesses.count{
+                self.buisnessArray.append(data.businesses[i])
+            }
+            self.updateDisplay()
         }
+        
         super.viewDidLoad()
     }
+    func updateDisplay() {
+        nameLabel.text = buisnessArray[0].name
+        priceLabel.text = buisnessArray[0].price
+        let categories = buisnessArray[0].categories
+        print(categories)
+    }
     @IBAction func getButton(_ sender: UIButton) {
+        print(buisnessArray)
     }
  
     override func didReceiveMemoryWarning() {
@@ -71,6 +57,7 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     completion(decoded)
                 }
+            
 //                print(decoded)
             } catch let jsonErr {
                 print("error serializing json:", jsonErr)
