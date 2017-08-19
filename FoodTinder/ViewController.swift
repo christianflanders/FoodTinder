@@ -12,10 +12,11 @@ class ViewController: UIViewController {
 
 
     var buisnessArray = [businesses]()
-
+    var currentNum = 0
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var catagoriesLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         var yelpData = YelpData(businesses: buisnessArray)
@@ -30,15 +31,47 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     func updateDisplay() {
-        nameLabel.text = buisnessArray[0].name
-        priceLabel.text = buisnessArray[0].price
-        let categories = buisnessArray[0].categories
-        print(categories)
+        nameLabel.text = buisnessArray[currentNum].name
+        let categories = buisnessArray[currentNum].categories
+        let one = categories[0]["title"] ?? ""
+        //TODO: Add in funcitonality to check how many categories there are and display them. For now we'll just display one
+//        let two = categories[1]["title"] ?? ""
+        DispatchQueue.global().async {
+            let image = self.getImage()
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }
+        let categoriesDescription = "\(one)"
+        catagoriesLabel.text = categoriesDescription
+        print(categoriesDescription)
+
     }
-    @IBAction func getButton(_ sender: UIButton) {
-        print(buisnessArray)
+
+    func getImage() -> UIImage{
+        var image = UIImage()
+        let url = URL(string:buisnessArray[currentNum].image_url)
+        let data = try? Data(contentsOf: url!)
+        image = UIImage(data: data!)!
+        return image
+
     }
- 
+    @IBAction func nextButton(_ sender: UIButton) {
+        print(buisnessArray.count)
+        if currentNum < buisnessArray.count - 1 {
+            currentNum += 1
+            updateDisplay()
+        } else {
+            print("reached end!")
+        }
+    }
+    @IBAction func backButton(_ sender: UIButton) {
+        if currentNum != 0 {
+            currentNum -= 1
+        }
+        updateDisplay()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
