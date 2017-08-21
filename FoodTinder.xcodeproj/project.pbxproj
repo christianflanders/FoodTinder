@@ -8,24 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		6B7F47C81F4649C300E4C5BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7F47C71F4649C300E4C5BE /* AppDelegate.swift */; };
-		6B7F47CA1F4649C300E4C5BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7F47C91F4649C300E4C5BE /* ViewController.swift */; };
 		6B7F47CD1F4649C300E4C5BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7F47CB1F4649C300E4C5BE /* Main.storyboard */; };
 		6B7F47CF1F4649C300E4C5BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B7F47CE1F4649C300E4C5BE /* Assets.xcassets */; };
 		6B7F47D21F4649C300E4C5BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7F47D01F4649C300E4C5BE /* LaunchScreen.storyboard */; };
 		6BB272A51F47B4FD009FC345 /* YelpData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB272A41F47B4FD009FC345 /* YelpData.swift */; };
 		6BB272A71F47B681009FC345 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB272A61F47B681009FC345 /* Networking.swift */; };
+		6BD416EA1F494288007A8FDE /* IntroScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */; };
+		6BD7151E1F48EEBD004378A0 /* SwipingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */; };
+		6BD715201F48F10B004378A0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD7151F1F48F10B004378A0 /* RoundedButton.swift */; };
+		6BDE7F881F4A47520029A78F /* WaitingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE7F871F4A47520029A78F /* WaitingScreenViewController.swift */; };
+		6BDE7F8A1F4AB4BB0029A78F /* UIImageViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE7F891F4AB4BB0029A78F /* UIImageViewX.swift */; };
+		6BE83B991F49101D00718E5B /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE83B981F49101D00718E5B /* UIViewX.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6B7F47C41F4649C300E4C5BE /* FoodTinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B7F47C71F4649C300E4C5BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6B7F47C91F4649C300E4C5BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6B7F47CC1F4649C300E4C5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B7F47CE1F4649C300E4C5BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B7F47D11F4649C300E4C5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B7F47D31F4649C300E4C5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BB272A41F47B4FD009FC345 /* YelpData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpData.swift; sourceTree = "<group>"; };
 		6BB272A61F47B681009FC345 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenViewController.swift; sourceTree = "<group>"; };
+		6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingScreenViewController.swift; sourceTree = "<group>"; };
+		6BD7151F1F48F10B004378A0 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		6BDE7F871F4A47520029A78F /* WaitingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingScreenViewController.swift; sourceTree = "<group>"; };
+		6BDE7F891F4AB4BB0029A78F /* UIImageViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewX.swift; sourceTree = "<group>"; };
+		6BE83B971F490FDE00718E5B /* DesignableX */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DesignableX; sourceTree = "<group>"; };
+		6BE83B981F49101D00718E5B /* UIViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewX.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +50,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B6BD8351F4A15B3004F6DBA /* YelpData */ = {
+			isa = PBXGroup;
+			children = (
+				6BB272A41F47B4FD009FC345 /* YelpData.swift */,
+			);
+			path = YelpData;
+			sourceTree = "<group>";
+		};
 		6B7F47BB1F4649C300E4C5BE = {
 			isa = PBXGroup;
 			children = (
@@ -58,16 +77,38 @@
 		6B7F47C61F4649C300E4C5BE /* FoodTinder */ = {
 			isa = PBXGroup;
 			children = (
+				6BE83B961F490F9F00718E5B /* Networking */,
 				6B7F47C71F4649C300E4C5BE /* AppDelegate.swift */,
-				6B7F47C91F4649C300E4C5BE /* ViewController.swift */,
-				6BB272A41F47B4FD009FC345 /* YelpData.swift */,
+				6B6BD8351F4A15B3004F6DBA /* YelpData */,
 				6B7F47CB1F4649C300E4C5BE /* Main.storyboard */,
+				6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */,
+				6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */,
+				6BDE7F871F4A47520029A78F /* WaitingScreenViewController.swift */,
+				6BE83B941F490F9100718E5B /* UI */,
 				6B7F47CE1F4649C300E4C5BE /* Assets.xcassets */,
 				6B7F47D01F4649C300E4C5BE /* LaunchScreen.storyboard */,
 				6B7F47D31F4649C300E4C5BE /* Info.plist */,
-				6BB272A61F47B681009FC345 /* Networking.swift */,
 			);
 			path = FoodTinder;
+			sourceTree = "<group>";
+		};
+		6BE83B941F490F9100718E5B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6BD7151F1F48F10B004378A0 /* RoundedButton.swift */,
+				6BDE7F891F4AB4BB0029A78F /* UIImageViewX.swift */,
+				6BE83B981F49101D00718E5B /* UIViewX.swift */,
+				6BE83B971F490FDE00718E5B /* DesignableX */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6BE83B961F490F9F00718E5B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				6BB272A61F47B681009FC345 /* Networking.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +182,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B7F47CA1F4649C300E4C5BE /* ViewController.swift in Sources */,
+				6BD715201F48F10B004378A0 /* RoundedButton.swift in Sources */,
+				6BD7151E1F48EEBD004378A0 /* SwipingScreenViewController.swift in Sources */,
+				6BDE7F881F4A47520029A78F /* WaitingScreenViewController.swift in Sources */,
 				6BB272A51F47B4FD009FC345 /* YelpData.swift in Sources */,
 				6B7F47C81F4649C300E4C5BE /* AppDelegate.swift in Sources */,
+				6BD416EA1F494288007A8FDE /* IntroScreenViewController.swift in Sources */,
+				6BDE7F8A1F4AB4BB0029A78F /* UIImageViewX.swift in Sources */,
 				6BB272A71F47B681009FC345 /* Networking.swift in Sources */,
+				6BE83B991F49101D00718E5B /* UIViewX.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
