@@ -22,8 +22,13 @@ struct center : Codable{
 struct businesses : Codable {
     var name:String
     var rating: Float
-    var price: String
+    var price: String?
+//    var location: [String?:String?]
+    var phone:String
+    var distance:Float
+    var url:String
     var image_url: String
-    var url: String
     var categories: [[String:String]]
+    var coordinates: [String:Float]
+    
 }

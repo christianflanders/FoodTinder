@@ -10,12 +10,13 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class IntroSceneViewController: UIViewController, CLLocationManagerDelegate {
+class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     //MARK: Enums
     
     //MARK: Constants
     let locationManager = CLLocationManager()
-    
+    let address = ""
+    let geocoder = CLGeocoder()
     //MARK: Variables
     
     //MARK: Outlets
@@ -76,6 +77,26 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate {
         alert.addAction(okAction)
     }
     
+    func userEnteredAddress(address:String){
+        geocoder.geocodeAddressString(address, completionHandler: {(placemarks,error) -> Void in
+            if ((error) != nil){
+                print("Error converting string to location",error)
+            }
+            if let placemark = placemarks?.first {
+                let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+                print(coordinates)
+            }
+            
+            
+        })
+    }
+    
+    //MARK: TextField Stuff
+    //When user enters a location, and presses the done button, 
+    
+    
+    
+    
     
      // MARK: - Navigation
      
@@ -83,6 +104,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate {
         let destinationVC = segue.destination as! WaitingScreenViewController
         destinationVC.longitude = longitude
         destinationVC.lattitude = lattitude
+        locationManager.stopUpdatingLocation()
      }
  
     // MARK: Location Manager Delegate

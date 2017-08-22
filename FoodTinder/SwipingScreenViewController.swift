@@ -12,7 +12,7 @@ class SwipingScreenViewController: UIViewController {
     //MARK: Enums
     
     //MARK: Constants
-    let alert = UIAlertController()
+
     //MARK: Variables
     
     //MARK: Outlets
@@ -100,6 +100,7 @@ class SwipingScreenViewController: UIViewController {
             }
             UIView.animate(withDuration: 0.2, animations: {
                 card.center = self.originalPosition
+                card.transform = CGAffineTransform(rotationAngle: 0)
             })
             print(direction)
 
@@ -114,7 +115,7 @@ class SwipingScreenViewController: UIViewController {
             currentNum += 1
             updateDisplay()
         } else {
-            print("reached end!")
+            presentAlert()
         }
     }
 
@@ -132,10 +133,17 @@ class SwipingScreenViewController: UIViewController {
             }
         let categoriesDescription = "\(one)"
         restaurantCatagoriesLabel.text = categoriesDescription
-        restaurantPriceLabel.text = currentRestaurant.price
+//        restaurantPriceLabel.text = currentRestaurant.price
         restaurantPriceLabel.text = String(currentRestaurant.rating)
         print(categoriesDescription)
         
+    }
+    func presentAlert() {
+        let alert = UIAlertController(title: "Reached the end!", message: "Increase your range to see more options", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Reached end of options, increase your range to see more options, or change your location", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+
     }
     
     func getImage() -> UIImage{
@@ -155,8 +163,6 @@ class SwipingScreenViewController: UIViewController {
                 let image = UIImage(data: data!)!
                 allImages.append(image)
             }
-        
-        
         return allImages
     }
 
