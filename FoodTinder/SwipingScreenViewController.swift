@@ -18,19 +18,20 @@ class SwipingScreenViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var cardContainerView: UIView!
-    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var restaurantImageView: UIImageViewX!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantCatagoriesLabel: UILabel!
     @IBOutlet weak var restaurantPriceLabel: UILabel!
-    @IBOutlet weak var restaurantStarsLabel: UILabel!
     @IBOutlet weak var restaurantDistanceLabel: UILabel!
+    @IBOutlet weak var restaurantStarsImage: UIImageView!
+    @IBOutlet weak var dislikeImage: UIImageView!
+    @IBOutlet weak var likeImage: UIImageView!
     
     //MARK: Weak Vars
     
     //MARK: Public Variables
     var originalPosition = CGPoint()
-    var buisnessArray = [businesses]()
+    var buisnessArray = [Buisness]()
     var imageArray = [UIImage]()
 
     //MARK: Private Variables
@@ -44,7 +45,7 @@ class SwipingScreenViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         updateDisplay()
         divisor = (view.frame.width / 2) / 0.61
-        originalPosition = cardView.center
+        originalPosition = cardContainerView.center
         
     }
     //MARK: IBActions
@@ -55,52 +56,63 @@ class SwipingScreenViewController: UIViewController {
         updateDisplay()
     }
     @IBAction func likeButton(_ sender: RoundedButton) {
+        
+    }
+    //MARK: Gestures
+    //FIXME: When card is returned to middle, it shound't be turned
+    
+    fileprivate func dislikeRestaurant(_ card: UIView) {
         print(buisnessArray.count)
         if currentNum < buisnessArray.count - 1 {
             currentNum += 1
             updateDisplay()
         } else {
-            print("reached end!")
+            presentAlert()
         }
+        UIView.animate(withDuration: 0.3, animations: {
+            card.center = CGPoint(x: card.center.x - 400 , y: card.center.y + 75)
+            card.transform = CGAffineTransform(scaleX: 0, y: 0)
+            card.alpha = 0
+        })
+        updateDisplay()
+        card.center = self.originalPosition
+        UIView.animate(withDuration: 0.3, animations: {
+            card.alpha = 1
+            self.dislikeImage.alpha = 0
+
+            card.transform = CGAffineTransform(scaleX: 1, y:  1)
+        })
+        return
     }
-    //MARK: Gestures
-    //FIXME: When card is returned to middle, it shound't be turned
     
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
-        card.center.x = sender.location(in: self.view).x
+        cardContainerView.center.x = sender.location(in: self.view).x
         let xFromCenter = card.center.x - view.center.x
-//        card.alpha =    view.center.x / abs(xFromCenter)
+        
         let direction = sender.translation(in: view)
         card.transform = CGAffineTransform(rotationAngle: xFromCenter / divisor)
+        if xFromCenter > 0 {
+           likeImage.alpha = abs(xFromCenter) / view.center.x
+        } else {
+            dislikeImage.alpha = abs(xFromCenter) / view.center.x
+        }
         if sender.state == UIGestureRecognizerState.ended {
             if direction.x < -80  {
-                dislike()
-                UIView.animate(withDuration: 0.3, animations: {
-                    card.center = CGPoint(x: card.center.x - 400 , y: card.center.y + 75)
-//                    card.transform = CGAffineTransform(scaleX: 0, y: 0)
-                    card.alpha = 0
-                    
-                    })
-                updateDisplay()
-                card.center = self.originalPosition
-                UIView.animate(withDuration: 0.3, animations: {
-                    card.alpha = 1
-                    card.transform = CGAffineTransform(scaleX: 1, y:  1)
-                    })
-                return
+                return dislikeRestaurant(card)
             } else if direction.x > 80 {
-                //TODO: Open link in Yelp online? directions to restaruant
                 UIView.animate(withDuration: 0.3, animations: {
-                    card.center = CGPoint(x: card.center.x + 400 , y: card.center.y - 75)
-                    card.alpha = 0
-                    card.transform = CGAffineTransform(rotationAngle: 0)
-                })
-                return
+                    self.likeImage.alpha = 1
+                    })
+                performSegue(withIdentifier: "RestaurantSelectedSegue", sender: self)
+            } else {
+                dislikeImage.alpha = 0
+                likeImage.alpha = 0
             }
             UIView.animate(withDuration: 0.2, animations: {
                 card.center = self.originalPosition
                 card.transform = CGAffineTransform(rotationAngle: 0)
+                self.likeImage.alpha = 0
             })
             print(direction)
 
@@ -110,20 +122,19 @@ class SwipingScreenViewController: UIViewController {
     
     //MARK: Instance Methods
     func dislike(){
-        print(buisnessArray.count)
-        if currentNum < buisnessArray.count - 1 {
-            currentNum += 1
-            updateDisplay()
-        } else {
-            presentAlert()
-        }
+        
     }
 
     func updateDisplay() {
         print(imageArray)
+        likeImage.alpha = 0
+        dislikeImage.alpha = 0
         restaurantImageView.borderWidth = 0
         let currentRestaurant = buisnessArray[currentNum]
         restaurantNameLabel.text = currentRestaurant.name
+        restaurantStarsImage.image = ratingToImage(rating: currentRestaurant.rating)
+        let distanceInMiles = String(format: "%.2f",currentRestaurant.distance * 0.0006214)
+        restaurantDistanceLabel.text = "\(distanceInMiles) miles away"
         let categories = currentRestaurant.categories
         let one = categories[0]["title"] ?? ""
         //TODO: Add in funcitonality to check how many categories there are and display them. For now we'll just display one
@@ -134,7 +145,10 @@ class SwipingScreenViewController: UIViewController {
         let categoriesDescription = "\(one)"
         restaurantCatagoriesLabel.text = categoriesDescription
 //        restaurantPriceLabel.text = currentRestaurant.price
-        restaurantPriceLabel.text = String(currentRestaurant.rating)
+        if let price = currentRestaurant.price {
+            restaurantPriceLabel.text = String(price)
+
+        }
         print(categoriesDescription)
         
     }
@@ -166,14 +180,24 @@ class SwipingScreenViewController: UIViewController {
         return allImages
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RestaurantSelectedSegue" {
+            print("segue identifier found")
+            let destination = segue.destination as! RestaurantSelectionScreenViewController
+            let currentRestaurant = buisnessArray[currentNum]
+            destination.coordinates["latitude"] = currentRestaurant.coordinates["latitude"]
+            destination.coordinates["longitude"] = currentRestaurant.coordinates["longitude"]
+            destination.restaurantLocation = currentRestaurant.location
+            destination.restorationIdentifier = currentRestaurant.id
+            destination.restaurantName = currentRestaurant.name
+            destination.restaurantURL = currentRestaurant.url
+            destination.restaurantPhoneNum = currentRestaurant.phone
+            destination.restaurantID = currentRestaurant.id
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

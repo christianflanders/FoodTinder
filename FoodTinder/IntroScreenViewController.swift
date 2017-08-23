@@ -22,6 +22,8 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     //MARK: Outlets
     @IBOutlet weak var mainCard: UIViewX!
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var distanceSlider: UISlider!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     //MARK: Weak Vars
     
@@ -31,11 +33,12 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     private var location: CLLocation?
     private var lattitude = ""
     private var longitude = ""
-    
+    private var distance = ""
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        self.locationTextField.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
@@ -43,6 +46,14 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
         animate()
     }
     //MARK: IBActions
+    @IBAction func distanceSliderAction(_ sender: UISlider) {
+        let distanceInMiles = String(format: "%2.0f",sender.value)
+        let distanceInMeters = String(format: "%2.0f",sender.value * 1609.34)
+        print(distanceInMeters)
+        distance = distanceInMeters
+        distanceLabel.text = "\(distanceInMiles) miles"
+        print(sender.value)
+    }
     @IBAction func getLocationButton(_ sender: UIButton) {
         let authStatus = CLLocationManager.authorizationStatus()
         if authStatus == .notDetermined {
@@ -59,6 +70,10 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     }
     
     //MARK: Instance Methods
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        self.view.endEditing(true)
+//        return false
+//    }
     func animate(){
         mainCard.transform = CGAffineTransform(scaleX: 0, y: 0)
         UIViewX.animate(withDuration: 0.7, animations: {
@@ -104,6 +119,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
         let destinationVC = segue.destination as! WaitingScreenViewController
         destinationVC.longitude = longitude
         destinationVC.lattitude = lattitude
+        destinationVC.distanceInMiles = distance
         locationManager.stopUpdatingLocation()
      }
  

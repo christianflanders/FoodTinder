@@ -23,18 +23,19 @@ class WaitingScreenViewController: UIViewController {
     //MARK: Public Variables
     var longitude = ""
     var lattitude = ""
+    var distanceInMiles = "10"
     //MARK: Private Variables
-    private var businessArray = [businesses]()
+    private var businessArray = [Buisness]()
     private var imageArray = [UIImage]()
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestURL(lattitude:lattitude, longitude:longitude) { data in
+        requestURL(lattitude:lattitude, longitude:longitude, radius: distanceInMiles) { data in
             //            yelpData = data
             var progress:Float = 0.0
             for i in 0..<data.businesses.count{
                 self.businessArray.append(data.businesses[i])
-                progress += Float(0.1)
+                progress += Float(0.2)
                 self.progressBar.setProgress(progress, animated: true)
             }
             self.imageArray = self.downloadAllImages()
@@ -52,15 +53,12 @@ class WaitingScreenViewController: UIViewController {
     //MARK: Instance Methods
     func downloadAllImages()-> [UIImage]{
         var allImages = [UIImage]()
-        
         for i in 0..<self.businessArray.count{
             let url = URL(string:self.businessArray[i].image_url)
             let data = try? Data(contentsOf: url!)
             let image = UIImage(data: data!)!
             allImages.append(image)
         }
-        
-        
         return allImages
     }
     
@@ -73,6 +71,7 @@ class WaitingScreenViewController: UIViewController {
             let destination = segue.destination as! SwipingScreenViewController
             destination.buisnessArray = businessArray
             destination.imageArray = imageArray
+            
             //send ayelp data obver to next view controller
         }
      // Get the new view controller using segue.destinationViewController.
