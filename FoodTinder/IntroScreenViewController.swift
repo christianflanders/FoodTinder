@@ -34,10 +34,12 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     private var lattitude = ""
     private var longitude = ""
     private var distance = ""
+    let locations = "7443 Troost Ave, North Hollywood, 91605"
+
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.locationTextField.delegate = self
+        self.locationTextField.delegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -70,17 +72,43 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     }
     
     //MARK: Instance Methods
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        self.view.endEditing(true)
-//        return false
-//    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        geocoder.geocodeAddressString(textField.text!) { (placemarks, error) in
+            self.processResponse(withPlacemarks: placemarks, error:error)
+        }
+        self.view.endEditing(true)
+        return false
+    }
     func animate(){
         mainCard.transform = CGAffineTransform(scaleX: 0, y: 0)
         UIViewX.animate(withDuration: 0.7, animations: {
             self.mainCard.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             })
     }
-
+    func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
+        // Update View
+        
+        
+        if let error = error {
+            print("Unable to Forward Geocode Address (\(error))")
+            print("Unable to Find Location for Address")
+            
+        } else {
+            var location: CLLocation?
+            
+            if let placemarks = placemarks, placemarks.count > 0 {
+                location = placemarks.first?.location
+            }
+            
+            if let location = location {
+                let coordinate = location.coordinate
+                longitude = String(coordinate.longitude)
+                lattitude = String(coordinate.latitude)
+            } else {
+                print("No Matching Location Found")
+            }
+        }
+    }
     func showLocationServicesDeniedAlert() {
         let alert = UIAlertController(title: "Location Services Disabled",
                                       message:
@@ -93,17 +121,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     }
     
     func userEnteredAddress(address:String){
-        geocoder.geocodeAddressString(address, completionHandler: {(placemarks,error) -> Void in
-            if ((error) != nil){
-                print("Error converting string to location",error)
-            }
-            if let placemark = placemarks?.first {
-                let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
-                print(coordinates)
-            }
-            
-            
-        })
+        
     }
     
     //MARK: TextField Stuff
