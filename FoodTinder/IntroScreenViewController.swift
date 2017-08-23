@@ -86,9 +86,6 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
             })
     }
     func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
-        // Update View
-        
-        
         if let error = error {
             print("Unable to Forward Geocode Address (\(error))")
             print("Unable to Find Location for Address")

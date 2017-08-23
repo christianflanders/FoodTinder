@@ -41,6 +41,7 @@ class WaitingScreenViewController: UIViewController {
             self.imageArray = self.downloadAllImages()
             self.performSegue(withIdentifier: "FinishedDownloadingSegue", sender: nil)
         }
+        print("latitude is \(lattitude) and longitude is \(longitude)")
         // Do any additional setup after loading the view.
     }
     
@@ -52,12 +53,16 @@ class WaitingScreenViewController: UIViewController {
     
     //MARK: Instance Methods
     func downloadAllImages()-> [UIImage]{
+        let errorImage = #imageLiteral(resourceName: "errorImage")
         var allImages = [UIImage]()
         for i in 0..<self.businessArray.count{
-            let url = URL(string:self.businessArray[i].image_url)
-            let data = try? Data(contentsOf: url!)
+            if let url = URL(string:self.businessArray[i].image_url) {
+            let data = try? Data(contentsOf: url)
             let image = UIImage(data: data!)!
             allImages.append(image)
+            } else {
+                allImages.append(errorImage)
+            }
         }
         return allImages
     }
