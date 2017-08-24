@@ -289,6 +289,9 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lvu-Z1-cmI">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="478"/>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lvu-Z1-cmI" secondAttribute="height" multiplier="187:239" id="TrQ-PX-xtN"/>
+                                        </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QO4-oV-Yft">
                                         <rect key="frame" x="8" y="378" width="358" height="92"/>
