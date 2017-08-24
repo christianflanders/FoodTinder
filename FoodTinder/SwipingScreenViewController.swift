@@ -18,14 +18,12 @@ class SwipingScreenViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var cardContainerView: UIView!
-    @IBOutlet weak var restaurantImageView: UIImageViewX!
+    @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantCatagoriesLabel: UILabel!
     @IBOutlet weak var restaurantPriceLabel: UILabel!
     @IBOutlet weak var restaurantDistanceLabel: UILabel!
     @IBOutlet weak var restaurantStarsImage: UIImageView!
-    @IBOutlet weak var dislikeImage: UIImageView!
-    @IBOutlet weak var likeImage: UIImageView!
     
     //MARK: Weak Vars
     
@@ -37,6 +35,7 @@ class SwipingScreenViewController: UIViewController {
     //MARK: Private Variables
     private var currentNum = 0
     private var divisor: CGFloat!
+    
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,15 +48,21 @@ class SwipingScreenViewController: UIViewController {
         
     }
     //MARK: IBActions
-    @IBAction func dislikeButton(_ sender: RoundedButton){
+    @IBAction func dislikeButton(_ sender: UIButton){
         if currentNum != 0 {
             currentNum -= 1
         }
         updateDisplay()
     }
-    @IBAction func likeButton(_ sender: RoundedButton) {
-        
+    
+    @IBAction func backButton(_ sender: UIButton) {
     }
+    
+    @IBAction func likeButton(_ sender: UIButton) {
+    }
+    
+    
+    
     //MARK: Gestures
     //FIXME: When card is returned to middle, it shound't be turned
     
@@ -78,7 +83,6 @@ class SwipingScreenViewController: UIViewController {
         card.center = self.originalPosition
         UIView.animate(withDuration: 0.3, animations: {
             card.alpha = 1
-            self.dislikeImage.alpha = 0
 
             card.transform = CGAffineTransform(scaleX: 1, y:  1)
         })
@@ -89,30 +93,21 @@ class SwipingScreenViewController: UIViewController {
         let card = sender.view!
         cardContainerView.center.x = sender.location(in: self.view).x
         let xFromCenter = card.center.x - view.center.x
-        
         let direction = sender.translation(in: view)
         card.transform = CGAffineTransform(rotationAngle: xFromCenter / divisor)
-        if xFromCenter > 0 {
-           likeImage.alpha = abs(xFromCenter) / view.center.x
-        } else {
-            dislikeImage.alpha = abs(xFromCenter) / view.center.x
-        }
+
         if sender.state == UIGestureRecognizerState.ended {
             if direction.x < -80  {
                 return dislikeRestaurant(card)
             } else if direction.x > 80 {
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.likeImage.alpha = 1
                     })
                 performSegue(withIdentifier: "RestaurantSelectedSegue", sender: self)
             } else {
-                dislikeImage.alpha = 0
-                likeImage.alpha = 0
             }
             UIView.animate(withDuration: 0.2, animations: {
                 card.center = self.originalPosition
                 card.transform = CGAffineTransform(rotationAngle: 0)
-                self.likeImage.alpha = 0
             })
             print(direction)
 
@@ -127,9 +122,6 @@ class SwipingScreenViewController: UIViewController {
 
     func updateDisplay() {
         print(imageArray)
-        likeImage.alpha = 0
-        dislikeImage.alpha = 0
-        restaurantImageView.borderWidth = 0
         let currentRestaurant = buisnessArray[currentNum]
         restaurantNameLabel.text = currentRestaurant.name
         restaurantStarsImage.image = ratingToImage(rating: currentRestaurant.rating)
