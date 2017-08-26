@@ -30,7 +30,7 @@ class WaitingScreenViewController: UIViewController {
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestURL(lattitude:lattitude, longitude:longitude, radius: distanceInMiles) { data in
+        requestURL(lattitude:lattitude, longitude:longitude, radius: distanceInMiles,offset: "0") { data in
             //            yelpData = data
             var progress:Float = 0.0
             for i in 0..<data.businesses.count{

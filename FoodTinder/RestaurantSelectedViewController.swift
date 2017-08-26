@@ -73,11 +73,11 @@ class RestaurantSelectionScreenViewController: UIViewController {
         mapItem.name = restaurantName
         mapItem.openInMaps(launchOptions: options)
     }
-    @IBAction func goBackButton(_ sender: UIButton) {
+        @IBAction func goBackButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func callButton(_ sender: UIButton) {
-        print(restaurantPhoneNum)
+            print(restaurantPhoneNum)
         let url = URL(string: "tel:\(restaurantPhoneNum)")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
         

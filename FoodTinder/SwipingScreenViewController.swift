@@ -62,6 +62,8 @@ class SwipingScreenViewController: UIViewController {
         }
     
     @IBAction func likeButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "RestaurantSelectedSegue", sender: self)
+
     }
     
     
@@ -76,7 +78,7 @@ class SwipingScreenViewController: UIViewController {
         } else {
             presentAlert()
         }
-        if currentNum > 15 {
+        if currentNum == 25 {
             addMoreRestaurantsToList()
         }
     }
@@ -181,17 +183,13 @@ class SwipingScreenViewController: UIViewController {
     }
     
     private func addMoreRestaurantsToList() {
-        requestURL(lattitude:lattitude, longitude:longitude, radius: "10000") { data in
+        requestURL(lattitude:lattitude, longitude:longitude, radius: "10000", offset:"50") { data in
             //            yelpData = data
             print("getting new restaurants")
              for i in 0..<data.businesses.count{
                 self.buisnessArray.append(data.businesses[i])
                 self.imageArray.append(#imageLiteral(resourceName: "errorImage"))
-//                progress += Float(0.2)
-//                self.progressBar.setProgress(progress, animated: true)
             }
-//            self.imageArray = self.downloadAllImages()
-//            self.performSegue(withIdentifier: "FinishedDownloadingSegue", sender: nil)
         }
     }
     // MARK: - Navigation
