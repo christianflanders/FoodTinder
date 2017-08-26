@@ -76,6 +76,8 @@ class WaitingScreenViewController: UIViewController {
             let destination = segue.destination as! SwipingScreenViewController
             destination.buisnessArray = businessArray
             destination.imageArray = imageArray
+            destination.lattitude = lattitude
+            destination.longitude = longitude
             
             //send ayelp data obver to next view controller
         }

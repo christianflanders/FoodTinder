@@ -31,7 +31,8 @@ class SwipingScreenViewController: UIViewController {
     var originalPosition = CGPoint()
     var buisnessArray = [Buisness]()
     var imageArray = [UIImage]()
-
+    var lattitude = ""
+    var longitude = ""
     //MARK: Private Variables
     private var currentNum = 0
     private var divisor: CGFloat!
@@ -53,6 +54,7 @@ class SwipingScreenViewController: UIViewController {
             currentNum -= 1
         }
         updateDisplay()
+        addMoreRestaurantsToList()
     }
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -171,7 +173,21 @@ class SwipingScreenViewController: UIViewController {
             }
         return allImages
     }
-
+    
+    private func addMoreRestaurantsToList() {
+        requestURL(lattitude:lattitude, longitude:longitude, radius: "5000") { data in
+            //            yelpData = data
+            print("getting new restaurants")
+             for i in 0..<data.businesses.count{
+                self.buisnessArray.append(data.businesses[i])
+                self.imageArray.append(#imageLiteral(resourceName: "errorImage"))
+//                progress += Float(0.2)
+//                self.progressBar.setProgress(progress, animated: true)
+            }
+//            self.imageArray = self.downloadAllImages()
+//            self.performSegue(withIdentifier: "FinishedDownloadingSegue", sender: nil)
+        }
+    }
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
