@@ -50,15 +50,16 @@ class SwipingScreenViewController: UIViewController {
     }
     //MARK: IBActions
     @IBAction func dislikeButton(_ sender: UIButton){
+        dislikeRestaurant()
+    }
+
+    
+    @IBAction func backButton(_ sender: UIButton) {
         if currentNum != 0 {
             currentNum -= 1
         }
         updateDisplay()
-        addMoreRestaurantsToList()
-    }
-    
-    @IBAction func backButton(_ sender: UIButton) {
-    }
+        }
     
     @IBAction func likeButton(_ sender: UIButton) {
     }
@@ -68,14 +69,21 @@ class SwipingScreenViewController: UIViewController {
     //MARK: Gestures
     //FIXME: When card is returned to middle, it shound't be turned
     
-    fileprivate func dislikeRestaurant(_ card: UIView) {
-        print(buisnessArray.count)
+    fileprivate func dislikeRestaurant() {
         if currentNum < buisnessArray.count - 1 {
             currentNum += 1
             updateDisplay()
         } else {
             presentAlert()
         }
+        if currentNum > 15 {
+            addMoreRestaurantsToList()
+        }
+    }
+    
+    fileprivate func dislikeRestaurantCard(_ card: UIView) {
+        print(buisnessArray.count)
+        dislikeRestaurant()
         UIView.animate(withDuration: 0.3, animations: {
             card.center = CGPoint(x: card.center.x - 400 , y: card.center.y + 75)
             card.transform = CGAffineTransform(scaleX: 0, y: 0)
@@ -100,7 +108,7 @@ class SwipingScreenViewController: UIViewController {
 
         if sender.state == UIGestureRecognizerState.ended {
             if direction.x < -80  {
-                return dislikeRestaurant(card)
+                return dislikeRestaurantCard(card)
             } else if direction.x > 80 {
                 UIView.animate(withDuration: 0.3, animations: {
                     })
@@ -123,7 +131,6 @@ class SwipingScreenViewController: UIViewController {
     }
 
     func updateDisplay() {
-        print(imageArray)
         let currentRestaurant = buisnessArray[currentNum]
         restaurantNameLabel.text = currentRestaurant.name
         restaurantStarsImage.image = ratingToImage(rating: currentRestaurant.rating)
@@ -143,7 +150,6 @@ class SwipingScreenViewController: UIViewController {
             restaurantPriceLabel.text = String(price)
 
         }
-        print(categoriesDescription)
         
     }
     func presentAlert() {
@@ -175,7 +181,7 @@ class SwipingScreenViewController: UIViewController {
     }
     
     private func addMoreRestaurantsToList() {
-        requestURL(lattitude:lattitude, longitude:longitude, radius: "5000") { data in
+        requestURL(lattitude:lattitude, longitude:longitude, radius: "10000") { data in
             //            yelpData = data
             print("getting new restaurants")
              for i in 0..<data.businesses.count{
