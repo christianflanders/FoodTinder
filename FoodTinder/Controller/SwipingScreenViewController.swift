@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SwipingScreenViewController: UIViewController {
+class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     //MARK: Enums
     
     //MARK: Constants
@@ -41,6 +41,13 @@ class SwipingScreenViewController: UIViewController {
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureOnCard(gestureRecognizer:)))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panGesture(_:)))
+        tap.delegate = self
+        pan.delegate = self
+        cardContainerView.addGestureRecognizer(tap)
+        cardContainerView.addGestureRecognizer(pan)
+ 
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +59,11 @@ class SwipingScreenViewController: UIViewController {
     //MARK: IBActions
     @IBAction func dislikeButton(_ sender: UIButton){
         dislikeRestaurant()
+        
+        cardContainerView.transform = CGAffineTransform(scaleX: 0, y: 0)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.cardContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+    })
     }
 
     
@@ -100,9 +112,10 @@ class SwipingScreenViewController: UIViewController {
         })
     }
     
-    @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
+    @objc func panGesture(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         cardContainerView.center.x = sender.location(in: self.view).x
+        cardContainerView.center.y =  sender.location(in: self.view).y
         let xFromCenter = card.center.x - view.center.x
         let direction = sender.translation(in: view)
         card.transform = CGAffineTransform(rotationAngle: xFromCenter / divisor)
@@ -206,9 +219,20 @@ class SwipingScreenViewController: UIViewController {
             destination.restaurantURL = currentRestaurant.url
             destination.restaurantPhoneNum = currentRestaurant.phone
             destination.restaurantID = currentRestaurant.id
+        } else if segue.identifier == "CardPressedSegue" {
+            //send info
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-
+    @objc func tapGestureOnCard(gestureRecognizer:UIGestureRecognizer ) {
+        print("shit was tapped!"
+        )
+        performSegue(withIdentifier: "CardPressedSegue", sender: self)
+        
+        
+    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    
 }

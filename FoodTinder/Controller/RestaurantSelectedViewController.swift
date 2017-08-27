@@ -40,16 +40,9 @@ class RestaurantSelectionScreenViewController: UIViewController {
         print(coordinates)
         print("Location decoded and sent" , restaurantLocation)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     //MARK: IBActions
     @IBAction func openInYelp(_ sender: UIButton) {
-//        let shortenedRestaurantURL = restaurantURL.replacingOccurrences(of: "https://www.yelp.com", with: "")
-//        let shortenedRestaurantURLForDeepLinking = URL(String:shortenedRestaurantURL)
-//        let options = [UIApplicationOpenURLOptionUniversalLinksOnly : true]
         print(restaurantID)
         let url = URL(string: "yelp:///biz/\(restaurantID)")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)

@@ -36,15 +36,12 @@ class WaitingScreenViewController: UIViewController {
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        activity.type = .ballTrianglePath
+        activity.type = .orbit
         activity.startAnimating()
         DispatchQueue.global().async {
         requestRestaurantsFromYelp(lattitude:self.lattitude, longitude:self.longitude, radius: self.distanceInMiles, offset: "0") { data in
-            var progress:Float = 0.0
             for i in 0..<data.businesses.count{
                 self.businessArray.append(data.businesses[i])
-                progress += Float(0.2)
-                self.progressBar.setProgress(progress, animated: true)
             }
             self.imageArray = downloadAllImagesFor(self.businessArray)
             self.performSegue(withIdentifier: "FinishedDownloadingSegue", sender: nil)
