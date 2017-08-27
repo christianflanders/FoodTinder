@@ -132,7 +132,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="PLr-ga-CcH" kind="show" id="IIo-ko-D4x"/>
+                                                    <action selector="goButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AGQ-cP-aBc"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -197,6 +197,7 @@
                         <outlet property="distanceSlider" destination="0Cn-Hc-yC2" id="uzv-6F-FDb"/>
                         <outlet property="locationTextField" destination="5mG-ud-Ii8" id="RZt-xb-JtO"/>
                         <outlet property="mainCard" destination="unl-Ru-ckf" id="Qr3-GG-wRM"/>
+                        <segue destination="PLr-ga-CcH" kind="show" identifier="LocationEnteredSegue" id="1UA-fq-kIB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

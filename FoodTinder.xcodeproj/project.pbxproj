@@ -14,6 +14,7 @@
 		6BB272A51F47B4FD009FC345 /* YelpData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB272A41F47B4FD009FC345 /* YelpData.swift */; };
 		6BB272A71F47B681009FC345 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB272A61F47B681009FC345 /* Networking.swift */; };
 		6BC5446E1F524C17004C418A /* BrushScriptStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5446D1F524B9E004C418A /* BrushScriptStd.otf */; };
+		6BC544701F525458004C418A /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5446F1F525458004C418A /* Alerts.swift */; };
 		6BCCCF171F4CF05E0009ECCA /* RestaurantSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCCCF161F4CF05E0009ECCA /* RestaurantSelectedViewController.swift */; };
 		6BD416EA1F494288007A8FDE /* IntroScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */; };
 		6BD7151E1F48EEBD004378A0 /* SwipingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */; };
@@ -33,6 +34,7 @@
 		6BB272A41F47B4FD009FC345 /* YelpData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpData.swift; sourceTree = "<group>"; };
 		6BB272A61F47B681009FC345 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		6BC5446D1F524B9E004C418A /* BrushScriptStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BrushScriptStd.otf; sourceTree = "<group>"; };
+		6BC5446F1F525458004C418A /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		6BCCCF161F4CF05E0009ECCA /* RestaurantSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSelectedViewController.swift; sourceTree = "<group>"; };
 		6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenViewController.swift; sourceTree = "<group>"; };
 		6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingScreenViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				6B7F47CB1F4649C300E4C5BE /* Main.storyboard */,
 				6BCCCF161F4CF05E0009ECCA /* RestaurantSelectedViewController.swift */,
 				6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */,
+				6BC5446F1F525458004C418A /* Alerts.swift */,
 				6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */,
 				6BDE7F871F4A47520029A78F /* WaitingScreenViewController.swift */,
 				6BE83B941F490F9100718E5B /* UI */,
@@ -198,6 +201,7 @@
 				6BD416EA1F494288007A8FDE /* IntroScreenViewController.swift in Sources */,
 				6BDE7F8A1F4AB4BB0029A78F /* UIImageViewX.swift in Sources */,
 				6BB272A71F47B681009FC345 /* Networking.swift in Sources */,
+				6BC544701F525458004C418A /* Alerts.swift in Sources */,
 				6BE83B991F49101D00718E5B /* UIViewX.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

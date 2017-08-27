@@ -70,6 +70,14 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
     }
+    @IBAction func goButton(_ sender: Any) {
+        if lattitude != "" && longitude != ""{
+        performSegue(withIdentifier: "LocationEnteredSegue", sender: view)
+        } else {
+            presentAlert(title: "No location found", message: "No valid location found, please try again",view: self)
+
+        }
+    }
     
     //MARK: Instance Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

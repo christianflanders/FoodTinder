@@ -24,9 +24,11 @@ class WaitingScreenViewController: UIViewController {
     var longitude = ""
     var lattitude = ""
     var distanceInMiles = "10"
+    
     //MARK: Private Variables
     private var businessArray = [Buisness]()
     private var imageArray = [UIImage]()
+    
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,7 @@ class WaitingScreenViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     //MARK: IBActions
+    
     
     //MARK: Instance Methods
     func downloadAllImages()-> [UIImage]{

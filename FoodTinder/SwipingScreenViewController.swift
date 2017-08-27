@@ -33,6 +33,7 @@ class SwipingScreenViewController: UIViewController {
     var imageArray = [UIImage]()
     var lattitude = ""
     var longitude = ""
+    
     //MARK: Private Variables
     private var currentNum = 0
     private var divisor: CGFloat!
@@ -76,7 +77,7 @@ class SwipingScreenViewController: UIViewController {
             currentNum += 1
             updateDisplay()
         } else {
-            presentAlert()
+            presentAlert(title: "Reached the end!", message: "Reached The End Of The List",view: self)
         }
         if currentNum == 25 {
             addMoreRestaurantsToList()
@@ -95,10 +96,8 @@ class SwipingScreenViewController: UIViewController {
         card.center = self.originalPosition
         UIView.animate(withDuration: 0.3, animations: {
             card.alpha = 1
-
             card.transform = CGAffineTransform(scaleX: 1, y:  1)
         })
-        return
     }
     
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
@@ -107,10 +106,14 @@ class SwipingScreenViewController: UIViewController {
         let xFromCenter = card.center.x - view.center.x
         let direction = sender.translation(in: view)
         card.transform = CGAffineTransform(rotationAngle: xFromCenter / divisor)
-
+  
         if sender.state == UIGestureRecognizerState.ended {
             if direction.x < -80  {
-                return dislikeRestaurantCard(card)
+                dislikeRestaurantCard(card)
+                card.transform = CGAffineTransform(scaleX: 0, y: 0)
+                UIView.animate(withDuration: 0.3, animations: {
+                    card.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                })
             } else if direction.x > 80 {
                 UIView.animate(withDuration: 0.3, animations: {
                     })
@@ -154,13 +157,7 @@ class SwipingScreenViewController: UIViewController {
         }
         
     }
-    func presentAlert() {
-        let alert = UIAlertController(title: "Reached the end!", message: "Increase your range to see more options", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Reached end of options, increase your range to see more options, or change your location", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
 
-    }
     
     func getImage() -> UIImage{
         var image = UIImage()
