@@ -524,18 +524,26 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c3-MK-DMM">
                                         <rect key="frame" x="40" y="50" width="195" height="49.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="36"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progressViewStyle="bar" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="zmb-uz-AsN">
                                         <rect key="frame" x="62" y="109.5" width="150" height="2.5"/>
                                     </progressView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p85-8z-yeE" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="17" y="142" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.46580693493150682" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="p85-8z-yeE" firstAttribute="top" secondItem="zmb-uz-AsN" secondAttribute="bottom" constant="31" id="COA-6r-y3d"/>
+                                    <constraint firstItem="p85-8z-yeE" firstAttribute="leading" secondItem="JdG-ki-Gqb" secondAttribute="leading" constant="17" id="I8O-0H-oWq"/>
                                     <constraint firstItem="3c3-MK-DMM" firstAttribute="leading" secondItem="JdG-ki-Gqb" secondAttribute="leading" constant="40" id="RpX-zZ-chf"/>
                                     <constraint firstItem="zmb-uz-AsN" firstAttribute="top" secondItem="3c3-MK-DMM" secondAttribute="bottom" constant="10" id="WxJ-Ah-Yfi"/>
+                                    <constraint firstAttribute="bottom" secondItem="p85-8z-yeE" secondAttribute="bottom" constant="142" id="hKQ-RZ-gK1"/>
                                     <constraint firstItem="3c3-MK-DMM" firstAttribute="top" secondItem="JdG-ki-Gqb" secondAttribute="top" constant="50" id="hZa-hd-pKf"/>
+                                    <constraint firstAttribute="trailing" secondItem="p85-8z-yeE" secondAttribute="trailing" constant="18" id="pJ2-h3-DXk"/>
                                     <constraint firstAttribute="trailing" secondItem="3c3-MK-DMM" secondAttribute="trailing" constant="40" id="zVy-gA-0av"/>
                                 </constraints>
                             </view>
@@ -553,6 +561,7 @@
                         <viewLayoutGuide key="safeArea" id="Bqv-S4-d3i"/>
                     </view>
                     <connections>
+                        <outlet property="activity" destination="p85-8z-yeE" id="A3F-zr-rkm"/>
                         <outlet property="progressBar" destination="zmb-uz-AsN" id="N8p-tS-YKg"/>
                         <outlet property="workingLabel" destination="3c3-MK-DMM" id="MAL-BB-2oP"/>
                         <segue destination="0Fz-BH-AiH" kind="showDetail" identifier="FinishedDownloadingSegue" id="kgE-7N-vFU"/>

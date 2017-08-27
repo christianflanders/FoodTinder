@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodTinder/ViewController.swift"
+            timestampString = "524871999.870918"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodTinder/RestaurantSelectedViewController.swift"
+            timestampString = "525489720.342186"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "RestaurantSelectionScreenViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodTinder.RestaurantSelectionScreenViewController.coordinates.getter : Swift.Dictionary&lt;Swift.String, Swift.Float&gt;"
+                  moduleName = "FoodTinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ChristianFlanders/Developer/App%20Projects/FoodTinder/FoodTinder/FoodTinder/RestaurantSelectedViewController.swift"
+                  timestampString = "525215990.081895"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodTinder.RestaurantSelectionScreenViewController.coordinates.setter : Swift.Dictionary&lt;Swift.String, Swift.Float&gt;"
+                  moduleName = "FoodTinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ChristianFlanders/Developer/App%20Projects/FoodTinder/FoodTinder/FoodTinder/RestaurantSelectedViewController.swift"
+                  timestampString = "525215990.083145"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodTinder.RestaurantSelectionScreenViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; FoodTinder.RestaurantSelectionScreenViewController"
+                  moduleName = "FoodTinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ChristianFlanders/Developer/App%20Projects/FoodTinder/FoodTinder/FoodTinder/RestaurantSelectedViewController.swift"
+                  timestampString = "525215990.084488"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodTinder.RestaurantSelectionScreenViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;FoodTinder.RestaurantSelectionScreenViewController&gt;"
+                  moduleName = "FoodTinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ChristianFlanders/Developer/App%20Projects/FoodTinder/FoodTinder/FoodTinder/RestaurantSelectedViewController.swift"
+                  timestampString = "525215990.086294"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
