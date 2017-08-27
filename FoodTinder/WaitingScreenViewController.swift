@@ -73,7 +73,8 @@ class WaitingScreenViewController: UIViewController {
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  segue.identifier == "FinishedDownloadingSegue" {
-            let destination = segue.destination as! SwipingScreenViewController
+            var destinationNavigationController = segue.destination as! UINavigationController
+            let destination = destinationNavigationController.topViewController as! SwipingScreenViewController
             destination.buisnessArray = businessArray
             destination.imageArray = imageArray
             destination.lattitude = lattitude

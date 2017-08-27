@@ -123,7 +123,18 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     
     //MARK: TextField Stuff
     //When user enters a location, and presses the done button, 
-    
+    func locationToString(lat: Double, long: Double){
+        let location = CLLocation(latitude: lat, longitude: long)
+        geocoder.reverseGeocodeLocation(location, completionHandler: { (placemark, error) in
+            let location = placemark?.first
+            let address = location?.thoroughfare ?? "address"
+            let city = location?.locality ?? "city"
+            let state = location?.administrativeArea ?? "state"
+            let zip = location?.postalCode ?? "zipcode"
+            self.locationTextField.text = "\(address), \(city), \(state), \(zip)"
+            }
+        )
+    }
     
     
     
@@ -150,7 +161,8 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
         if let location = location {
             lattitude = String(format: "%.8f", location.coordinate.latitude)
             longitude = String(format: "%.8f", location.coordinate.longitude)
-            locationTextField.text = "Lattitude: \(lattitude), Longitude: \(longitude)"
+            locationToString(lat: location.coordinate.latitude, long: location.coordinate.longitude)
+            
         }
     }
 }

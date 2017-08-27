@@ -13,6 +13,7 @@
 		6B7F47D21F4649C300E4C5BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7F47D01F4649C300E4C5BE /* LaunchScreen.storyboard */; };
 		6BB272A51F47B4FD009FC345 /* YelpData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB272A41F47B4FD009FC345 /* YelpData.swift */; };
 		6BB272A71F47B681009FC345 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB272A61F47B681009FC345 /* Networking.swift */; };
+		6BC5446E1F524C17004C418A /* BrushScriptStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5446D1F524B9E004C418A /* BrushScriptStd.otf */; };
 		6BCCCF171F4CF05E0009ECCA /* RestaurantSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCCCF161F4CF05E0009ECCA /* RestaurantSelectedViewController.swift */; };
 		6BD416EA1F494288007A8FDE /* IntroScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */; };
 		6BD7151E1F48EEBD004378A0 /* SwipingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */; };
@@ -31,6 +32,7 @@
 		6B7F47D31F4649C300E4C5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BB272A41F47B4FD009FC345 /* YelpData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpData.swift; sourceTree = "<group>"; };
 		6BB272A61F47B681009FC345 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		6BC5446D1F524B9E004C418A /* BrushScriptStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BrushScriptStd.otf; sourceTree = "<group>"; };
 		6BCCCF161F4CF05E0009ECCA /* RestaurantSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSelectedViewController.swift; sourceTree = "<group>"; };
 		6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenViewController.swift; sourceTree = "<group>"; };
 		6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingScreenViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		6B6BD8351F4A15B3004F6DBA /* YelpData */ = {
 			isa = PBXGroup;
 			children = (
+				6BC5446D1F524B9E004C418A /* BrushScriptStd.otf */,
 				6BB272A41F47B4FD009FC345 /* YelpData.swift */,
 			);
 			path = YelpData;
@@ -172,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BC5446E1F524C17004C418A /* BrushScriptStd.otf in Resources */,
 				6B7F47D21F4649C300E4C5BE /* LaunchScreen.storyboard in Resources */,
 				6B7F47CF1F4649C300E4C5BE /* Assets.xcassets in Resources */,
 				6B7F47CD1F4649C300E4C5BE /* Main.storyboard in Resources */,

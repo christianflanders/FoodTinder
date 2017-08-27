@@ -26,6 +26,10 @@
 	<string>Main</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>&quot;Use your location to find nearby resturants&quot;</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BrushScriptStd.otf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

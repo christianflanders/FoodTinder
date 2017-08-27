@@ -46,17 +46,17 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Ik3-e3-wFB">
                                                 <rect key="frame" x="0.0" y="165" width="295" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mG-ud-Ii8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="219" height="50"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location..." minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="5mG-ud-Ii8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="szW-UR-jf8"/>
                                                         </constraints>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="location"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrV-wX-PtQ" customClass="UIButtonX" customModule="FoodTinder" customModuleProvider="target">
-                                                        <rect key="frame" x="219" y="0.0" width="76" height="50"/>
+                                                        <rect key="frame" x="208" y="0.0" width="87" height="50"/>
                                                         <color key="backgroundColor" red="0.82515770200000005" green="0.0" blue="0.050240688030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="DVu-i0-dbE"/>
@@ -132,7 +132,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="PLr-ga-CcH" kind="presentation" id="IIo-ko-D4x"/>
+                                                    <segue destination="PLr-ga-CcH" kind="show" id="IIo-ko-D4x"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -228,8 +228,15 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQm-1h-6xh">
                                                     <rect key="frame" x="8" y="0.0" width="95" height="47"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.4120818973" green="0.94247066970000004" blue="0.68337118630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" title="Select Again"/>
+                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Select Again">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="goBackButton:" destination="Iwn-z7-Ab2" eventType="touchUpInside" id="sqp-jv-MYn"/>
                                                     </connections>
@@ -326,9 +333,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQW-72-ged" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="GXw-he-nL9"/>
             </objects>
-            <point key="canvasLocation" x="2685.507246376812" y="86.413043478260875"/>
+            <point key="canvasLocation" x="3351" y="70"/>
         </scene>
-        <!--Swiping Screen View Controller-->
+        <!--FoodTinder-->
         <scene sceneID="L6u-Oa-eks">
             <objects>
                 <viewController id="JCM-Qw-Z3u" customClass="SwipingScreenViewController" customModule="FoodTinder" customModuleProvider="target" sceneMemberID="viewController">
@@ -340,7 +347,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="WiH-7Q-ET2">
-                                <rect key="frame" x="20" y="105" width="335" height="428.5"/>
+                                <rect key="frame" x="20" y="114.5" width="335" height="428.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lvu-Z1-cmI">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="428.5"/>
@@ -422,32 +429,25 @@
                                     <outletCollection property="gestureRecognizers" destination="uYf-kI-TSM" appends="YES" id="RkB-R9-atM"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8K3-O9-YJg">
-                                <rect key="frame" x="22" y="20" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="B9v-7a-f1v">
-                                <rect key="frame" x="0.0" y="568.5" width="375" height="98.5"/>
+                                <rect key="frame" x="0.0" y="578" width="375" height="89"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RD3-oj-Z7S">
-                                        <rect key="frame" x="0.0" y="0.0" width="125" height="98.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="89"/>
                                         <state key="normal" image="DislikeButton"/>
                                         <connections>
                                             <action selector="dislikeButton:" destination="JCM-Qw-Z3u" eventType="touchUpInside" id="kak-xZ-Q3K"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kq1-vh-6MB">
-                                        <rect key="frame" x="125" y="0.0" width="125" height="98.5"/>
+                                        <rect key="frame" x="125" y="0.0" width="125" height="89"/>
                                         <state key="normal" image="BackButton"/>
                                         <connections>
                                             <action selector="backButton:" destination="JCM-Qw-Z3u" eventType="touchUpInside" id="wSH-mw-OfO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xms-vb-K1y">
-                                        <rect key="frame" x="250" y="0.0" width="125" height="98.5"/>
+                                        <rect key="frame" x="250" y="0.0" width="125" height="89"/>
                                         <state key="normal" image="HeartButton"/>
                                         <connections>
                                             <action selector="likeButton:" destination="JCM-Qw-Z3u" eventType="touchUpInside" id="UD7-wh-amZ"/>
@@ -455,35 +455,28 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FoodTinderNavBar" translatesAutoresizingMaskIntoConstraints="NO" id="wVx-n6-SnM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="wVx-n6-SnM" secondAttribute="height" multiplier="207:47" id="Hdi-zR-8Av"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="B9v-7a-f1v" firstAttribute="leading" secondItem="WoP-Mk-JhA" secondAttribute="leading" id="88V-Sy-NAT"/>
                             <constraint firstItem="WoP-Mk-JhA" firstAttribute="trailing" secondItem="B9v-7a-f1v" secondAttribute="trailing" id="Cso-7h-tUy"/>
                             <constraint firstItem="B9v-7a-f1v" firstAttribute="top" secondItem="WiH-7Q-ET2" secondAttribute="bottom" constant="35" id="F9v-zs-DMd"/>
-                            <constraint firstItem="WiH-7Q-ET2" firstAttribute="top" secondItem="wVx-n6-SnM" secondAttribute="bottom" constant="20" id="FSy-xK-bVR"/>
-                            <constraint firstItem="wVx-n6-SnM" firstAttribute="top" secondItem="PmA-Sq-d2E" secondAttribute="top" id="Fjs-5N-Qjg"/>
                             <constraint firstItem="dEj-jV-XgG" firstAttribute="bottom" secondItem="WoP-Mk-JhA" secondAttribute="bottom" id="IiR-kb-XDA"/>
                             <constraint firstItem="B9v-7a-f1v" firstAttribute="top" secondItem="WiH-7Q-ET2" secondAttribute="bottom" constant="35" id="Lx7-MW-62w"/>
                             <constraint firstItem="WoP-Mk-JhA" firstAttribute="bottom" secondItem="B9v-7a-f1v" secondAttribute="bottom" id="S3z-PD-WEG"/>
-                            <constraint firstItem="wVx-n6-SnM" firstAttribute="leading" secondItem="WoP-Mk-JhA" secondAttribute="leading" id="TCE-aw-EWo"/>
                             <constraint firstItem="B9v-7a-f1v" firstAttribute="trailing" secondItem="WoP-Mk-JhA" secondAttribute="trailing" id="VnS-dx-aJW"/>
                             <constraint firstItem="dEj-jV-XgG" firstAttribute="trailing" secondItem="WoP-Mk-JhA" secondAttribute="trailing" id="cZj-kj-KfS"/>
                             <constraint firstItem="dEj-jV-XgG" firstAttribute="leading" secondItem="WoP-Mk-JhA" secondAttribute="leading" id="dMm-Ns-xhR"/>
                             <constraint firstItem="B9v-7a-f1v" firstAttribute="leading" secondItem="WoP-Mk-JhA" secondAttribute="leading" id="mgb-hL-Dzh"/>
-                            <constraint firstItem="wVx-n6-SnM" firstAttribute="trailing" secondItem="WoP-Mk-JhA" secondAttribute="trailing" id="t2m-96-bwF"/>
                             <constraint firstItem="WoP-Mk-JhA" firstAttribute="trailing" secondItem="WiH-7Q-ET2" secondAttribute="trailing" constant="20" id="uV6-ZR-c9b"/>
                             <constraint firstItem="dEj-jV-XgG" firstAttribute="top" secondItem="PmA-Sq-d2E" secondAttribute="top" id="wB5-1A-LUj"/>
                             <constraint firstItem="WiH-7Q-ET2" firstAttribute="leading" secondItem="WoP-Mk-JhA" secondAttribute="leading" constant="20" id="xWV-vK-fz7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WoP-Mk-JhA"/>
                     </view>
+                    <navigationItem key="navigationItem" title="FoodTinder" largeTitleDisplayMode="always" id="nh8-Nr-C6N">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="RRY-mD-6M1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="cardContainerView" destination="WiH-7Q-ET2" id="9zV-Qz-Aa6"/>
                         <outlet property="restaurantCatagoriesLabel" destination="7Q9-aj-ti8" id="Hy4-pZ-vX7"/>
@@ -502,7 +495,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1768.1159420289857" y="86.413043478260875"/>
+            <point key="canvasLocation" x="2444" y="86"/>
         </scene>
         <!--Waiting Screen View Controller-->
         <scene sceneID="vrV-ZK-9gd">
@@ -512,51 +505,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ofb-KP-Jes">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="p5V-52-mme">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdG-ki-Gqb">
-                                <rect key="frame" x="47" y="97" width="296" height="412"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JdG-ki-Gqb">
+                                <rect key="frame" x="50" y="97" width="275" height="412"/>
                                 <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="zmb-uz-AsN">
-                                        <rect key="frame" x="73" y="204" width="150" height="2.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </progressView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c3-MK-DMM">
-                                        <rect key="frame" x="59" y="146" width="178" height="49.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c3-MK-DMM">
+                                        <rect key="frame" x="40" y="50" width="195" height="49.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progressViewStyle="bar" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="zmb-uz-AsN">
+                                        <rect key="frame" x="62" y="154" width="150" height="2.5"/>
+                                    </progressView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.46580693493150682" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="3c3-MK-DMM" firstAttribute="leading" secondItem="JdG-ki-Gqb" secondAttribute="leading" constant="40" id="RpX-zZ-chf"/>
+                                    <constraint firstItem="zmb-uz-AsN" firstAttribute="top" secondItem="3c3-MK-DMM" secondAttribute="bottom" constant="10" id="WxJ-Ah-Yfi"/>
+                                    <constraint firstItem="3c3-MK-DMM" firstAttribute="top" secondItem="JdG-ki-Gqb" secondAttribute="top" constant="50" id="hZa-hd-pKf"/>
+                                    <constraint firstAttribute="trailing" secondItem="3c3-MK-DMM" secondAttribute="trailing" constant="40" id="zVy-gA-0av"/>
+                                </constraints>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="Bqv-S4-d3i" firstAttribute="bottom" secondItem="JdG-ki-Gqb" secondAttribute="bottom" constant="158" id="H1c-bO-vbV"/>
+                            <constraint firstItem="JdG-ki-Gqb" firstAttribute="top" secondItem="Bqv-S4-d3i" secondAttribute="top" constant="77" id="KlQ-Us-wz4"/>
+                            <constraint firstItem="JdG-ki-Gqb" firstAttribute="leading" secondItem="Bqv-S4-d3i" secondAttribute="leading" constant="50" id="RnZ-Qr-xhC"/>
+                            <constraint firstItem="Bqv-S4-d3i" firstAttribute="trailing" secondItem="JdG-ki-Gqb" secondAttribute="trailing" constant="50" id="xRe-Sr-W9P"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bqv-S4-d3i"/>
                     </view>
                     <connections>
                         <outlet property="progressBar" destination="zmb-uz-AsN" id="N8p-tS-YKg"/>
                         <outlet property="workingLabel" destination="3c3-MK-DMM" id="MAL-BB-2oP"/>
-                        <segue destination="JCM-Qw-Z3u" kind="showDetail" identifier="FinishedDownloadingSegue" id="kgE-7N-vFU"/>
+                        <segue destination="0Fz-BH-AiH" kind="showDetail" identifier="FinishedDownloadingSegue" id="kgE-7N-vFU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ukk-w9-kl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="880.79999999999995" y="69.715142428785612"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kBF-TK-Pun">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Fz-BH-AiH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="in5-bM-p3r">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JCM-Qw-Z3u" kind="relationship" relationship="rootViewController" id="hFC-bg-JCU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BG4-7i-Xc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="70"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BackButton" width="89" height="89"/>
         <image name="DislikeButton" width="89" height="89"/>
-        <image name="FoodTinderNavBar" width="375" height="86"/>
         <image name="HeartButton" width="89" height="89"/>
         <image name="Rectangle 4" width="375" height="667"/>
         <image name="Yelp_trademark_RGB_outline" width="1000" height="640"/>
