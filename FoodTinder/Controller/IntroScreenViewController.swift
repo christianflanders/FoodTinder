@@ -11,12 +11,14 @@ import CoreLocation
 import MapKit
 
 class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
+    
     //MARK: Enums
     
     //MARK: Constants
     let locationManager = CLLocationManager()
     let address = ""
     let geocoder = CLGeocoder()
+    
     //MARK: Variables
     
     //MARK: Outlets
@@ -34,18 +36,17 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     private var lattitude = ""
     private var longitude = ""
     private var distance = ""
-    let locations = "7443 Troost Ave, North Hollywood, 91605"
 
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.locationTextField.delegate = self
-        
+        animate()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        animate()
+        
     }
     //MARK: IBActions
     @IBAction func distanceSliderAction(_ sender: UISlider) {
@@ -56,6 +57,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
         distanceLabel.text = "\(distanceInMiles) miles"
         print(sender.value)
     }
+    
     @IBAction func getLocationButton(_ sender: UIButton) {
         let authStatus = CLLocationManager.authorizationStatus()
         if authStatus == .notDetermined {
@@ -63,19 +65,19 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
             return
         }
         if authStatus == .denied || authStatus == .restricted {
-            showLocationServicesDeniedAlert()
+            presentAlert(title: "Location Services Disabled", message: "Please enable location services for this app in Settings.", view: self)
             return
         }
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
     }
+    
     @IBAction func goButton(_ sender: Any) {
-        if lattitude != "" && longitude != ""{
+        if lattitude != "" && longitude != "" {
         performSegue(withIdentifier: "LocationEnteredSegue", sender: view)
         } else {
             presentAlert(title: "No location found", message: "No valid location found, please try again",view: self)
-
         }
     }
     
@@ -100,11 +102,9 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
             
         } else {
             var location: CLLocation?
-            
             if let placemarks = placemarks, placemarks.count > 0 {
                 location = placemarks.first?.location
             }
-            
             if let location = location {
                 let coordinate = location.coordinate
                 longitude = String(coordinate.longitude)
@@ -114,21 +114,8 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
             }
         }
     }
-    func showLocationServicesDeniedAlert() {
-        let alert = UIAlertController(title: "Location Services Disabled",
-                                      message:
-            "Please enable location services for this app in Settings.",
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default,
-                                     handler: nil)
-        present(alert, animated: true, completion: nil)
-        alert.addAction(okAction)
-    }
     
-    func userEnteredAddress(address:String){
-        
-    }
-    
+
     //MARK: TextField Stuff
     //When user enters a location, and presses the done button, 
     func locationToString(lat: Double, long: Double){
@@ -159,6 +146,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
  
     // MARK: Location Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        presentAlert(title: "Something went wrong!", message: "Try again", view: self)
         print("Location manager failed with error \(error))")
     }
     func locationManager(_ manager: CLLocationManager,

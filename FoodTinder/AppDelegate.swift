@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = colorOne
         navigationBarAppearace.titleTextAttributes = [
-            NSAttributedStringKey.font: UIFont(name: "BrushScriptStd", size: 30)!
+            NSAttributedStringKey.font: UIFont(name: "BrushScriptStd", size: 40)!,
+            NSAttributedStringKey.foregroundColor : UIColor.white
         ]
         // Override point for customization after application launch.
         return true

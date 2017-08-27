@@ -32,15 +32,14 @@ class WaitingScreenViewController: UIViewController {
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestURL(lattitude:lattitude, longitude:longitude, radius: distanceInMiles,offset: "0") { data in
-            //            yelpData = data
+        requestRestaurantsFromYelp(lattitude:lattitude, longitude:longitude, radius: distanceInMiles, offset: "0") { data in
             var progress:Float = 0.0
             for i in 0..<data.businesses.count{
                 self.businessArray.append(data.businesses[i])
                 progress += Float(0.2)
                 self.progressBar.setProgress(progress, animated: true)
             }
-            self.imageArray = self.downloadAllImages()
+            self.imageArray = downloadAllImagesFor(self.businessArray)
             self.performSegue(withIdentifier: "FinishedDownloadingSegue", sender: nil)
         }
         print("latitude is \(lattitude) and longitude is \(longitude)")
@@ -55,20 +54,7 @@ class WaitingScreenViewController: UIViewController {
     
     
     //MARK: Instance Methods
-    func downloadAllImages()-> [UIImage]{
-        let errorImage = #imageLiteral(resourceName: "errorImage")
-        var allImages = [UIImage]()
-        for i in 0..<self.businessArray.count{
-            if let url = URL(string:self.businessArray[i].image_url) {
-            let data = try? Data(contentsOf: url)
-            let image = UIImage(data: data!)!
-            allImages.append(image)
-            } else {
-                allImages.append(errorImage)
-            }
-        }
-        return allImages
-    }
+
     
     
      // MARK: - Navigation

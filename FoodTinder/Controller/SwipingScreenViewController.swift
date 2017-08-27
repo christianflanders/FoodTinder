@@ -180,12 +180,14 @@ class SwipingScreenViewController: UIViewController {
     }
     
     private func addMoreRestaurantsToList() {
-        requestURL(lattitude:lattitude, longitude:longitude, radius: "10000", offset:"50") { data in
+        requestRestaurantsFromYelp(lattitude:lattitude, longitude:longitude, radius: "10000", offset:"50") { data in
             //            yelpData = data
             print("getting new restaurants")
-             for i in 0..<data.businesses.count{
-                self.buisnessArray.append(data.businesses[i])
-                self.imageArray.append(#imageLiteral(resourceName: "errorImage"))
+            DispatchQueue.global().async {
+                for i in 0..<data.businesses.count{
+                    self.buisnessArray.append(data.businesses[i])
+                    self.imageArray.append(downloadImagesForRestaurant(data.businesses[i]))
+                }
             }
         }
     }

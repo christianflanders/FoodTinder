@@ -41,7 +41,6 @@
 		6BD7151F1F48F10B004378A0 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		6BDE7F871F4A47520029A78F /* WaitingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingScreenViewController.swift; sourceTree = "<group>"; };
 		6BDE7F891F4AB4BB0029A78F /* UIImageViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewX.swift; sourceTree = "<group>"; };
-		6BE83B971F490FDE00718E5B /* DesignableX */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DesignableX; sourceTree = "<group>"; };
 		6BE83B981F49101D00718E5B /* UIViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewX.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,7 +58,6 @@
 		6B6BD8351F4A15B3004F6DBA /* YelpData */ = {
 			isa = PBXGroup;
 			children = (
-				6BC5446D1F524B9E004C418A /* BrushScriptStd.otf */,
 				6BB272A41F47B4FD009FC345 /* YelpData.swift */,
 			);
 			path = YelpData;
@@ -84,30 +82,46 @@
 		6B7F47C61F4649C300E4C5BE /* FoodTinder */ = {
 			isa = PBXGroup;
 			children = (
-				6BE83B961F490F9F00718E5B /* Networking */,
 				6B7F47C71F4649C300E4C5BE /* AppDelegate.swift */,
-				6B6BD8351F4A15B3004F6DBA /* YelpData */,
-				6B7F47CB1F4649C300E4C5BE /* Main.storyboard */,
-				6BCCCF161F4CF05E0009ECCA /* RestaurantSelectedViewController.swift */,
-				6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */,
-				6BC5446F1F525458004C418A /* Alerts.swift */,
-				6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */,
-				6BDE7F871F4A47520029A78F /* WaitingScreenViewController.swift */,
+				6BC544721F52574F004C418A /* Data and Model */,
+				6BC544711F525721004C418A /* Controller */,
 				6BE83B941F490F9100718E5B /* UI */,
-				6B7F47CE1F4649C300E4C5BE /* Assets.xcassets */,
-				6B7F47D01F4649C300E4C5BE /* LaunchScreen.storyboard */,
 				6B7F47D31F4649C300E4C5BE /* Info.plist */,
 			);
 			path = FoodTinder;
 			sourceTree = "<group>";
 		};
+		6BC544711F525721004C418A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6BD416E91F494288007A8FDE /* IntroScreenViewController.swift */,
+				6BDE7F871F4A47520029A78F /* WaitingScreenViewController.swift */,
+				6BD7151D1F48EEBD004378A0 /* SwipingScreenViewController.swift */,
+				6BCCCF161F4CF05E0009ECCA /* RestaurantSelectedViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6BC544721F52574F004C418A /* Data and Model */ = {
+			isa = PBXGroup;
+			children = (
+				6BC5446F1F525458004C418A /* Alerts.swift */,
+				6BE83B961F490F9F00718E5B /* Networking */,
+				6B6BD8351F4A15B3004F6DBA /* YelpData */,
+			);
+			path = "Data and Model";
+			sourceTree = "<group>";
+		};
 		6BE83B941F490F9100718E5B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6BC5446D1F524B9E004C418A /* BrushScriptStd.otf */,
+				6B7F47CB1F4649C300E4C5BE /* Main.storyboard */,
+				6B7F47CE1F4649C300E4C5BE /* Assets.xcassets */,
 				6BD7151F1F48F10B004378A0 /* RoundedButton.swift */,
+				6B7F47D01F4649C300E4C5BE /* LaunchScreen.storyboard */,
 				6BDE7F891F4AB4BB0029A78F /* UIImageViewX.swift */,
 				6BE83B981F49101D00718E5B /* UIViewX.swift */,
-				6BE83B971F490FDE00718E5B /* DesignableX */,
 			);
 			path = UI;
 			sourceTree = "<group>";

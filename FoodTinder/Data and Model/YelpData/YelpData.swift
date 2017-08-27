@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 struct YelpData : Codable{
     var businesses : [Buisness]
 }
@@ -44,16 +45,6 @@ struct location : Codable {
 
 }
 
-//    mutating func ratingToImage(){
-//        switch rating {
-//        case 0:
-//            ratingImage = #imageLiteral(resourceName: "extra_large_0")
-//        case 1:
-//            ratingImage = #imageLiteral(resourceName: "extra_large_1")
-//        default:
-//            print("ohfuckboys")
-//        }
-//    }
 func ratingToImage(rating:Float)-> UIImage {
     var ratingImage = UIImage()
             switch rating {

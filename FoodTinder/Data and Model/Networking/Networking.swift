@@ -8,9 +8,10 @@
 //34.1870
 //-118.3813
 import Foundation
+import UIKit
 //https://api.yelp.com/v3/businesses/search?latitude=\(lattitude)&longitude=\(longitude)&term=food&radius=\(radius)
 //https://api.yelp.com/v3/businesses/search?latitude=34.1870&longitude=-118.3813&radius=16308
-func requestURL(lattitude: String, longitude:String,radius:String, offset:String, completion: @escaping (YelpData) -> Void){
+func requestRestaurantsFromYelp(lattitude: String, longitude:String,radius:String, offset:String, completion: @escaping (YelpData) -> Void){
     print("radius is", radius)
     let search = "https://api.yelp.com/v3/businesses/search?latitude=\(lattitude)&longitude=\(longitude)&term=food&radius=\(radius)&limit=50&offset=\(offset)&sort_by=best_match"
     let url = URL(string: search)!
@@ -33,4 +34,31 @@ func requestURL(lattitude: String, longitude:String,radius:String, offset:String
         
         }.resume()
 }
+
+func downloadAllImagesFor(_ businessArray: [Buisness])-> [UIImage]{
+    let errorImage = #imageLiteral(resourceName: "errorImage")
+    var allImages = [UIImage]()
+    for i in 0..<businessArray.count{
+        if let url = URL(string:businessArray[i].image_url) {
+            let data = try? Data(contentsOf: url)
+            let image = UIImage(data: data!)!
+            allImages.append(image)
+        } else {
+            allImages.append(errorImage)
+        }
+    }
+    return allImages
+    }
+
+    func downloadImagesForRestaurant(_ business: Buisness)-> UIImage{
+    let errorImage = #imageLiteral(resourceName: "errorImage")
+        var image = UIImage()
+    if let url = URL(string:business.image_url) {
+        let data = try? Data(contentsOf: url)
+        image = UIImage(data: data!)!
+        return image
+    } else {
+        return errorImage
+    }
+    }
 
