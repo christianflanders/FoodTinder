@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+func presentAlertWithClosuer(title: String, message:String, view: UIViewController, completion: @escaping (UIAlertAction) -> ()) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let action = UIAlertAction(title: title, style: .default, handler: completion)
+    alert.addAction(action)
+    view.present(alert, animated: true, completion: nil)
+}
 func presentAlert(title: String, message:String, view: UIViewController) {
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let action = UIAlertAction(title: title, style: .default, handler: nil)

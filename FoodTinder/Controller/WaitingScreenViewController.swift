@@ -39,12 +39,20 @@ class WaitingScreenViewController: UIViewController {
         activity.type = .orbit
         activity.startAnimating()
         DispatchQueue.global().async {
-        requestRestaurantsFromYelp(lattitude:self.lattitude, longitude:self.longitude, radius: self.distanceInMiles, offset: "0") { data in
-            for i in 0..<data.businesses.count{
+        requestRestaurantsFromYelp(lattitude:self.lattitude, longitude:self.longitude, radius: self.distanceInMiles, offset: "0") { data, error in
+            if error == nil {
+                let data = data!
+                for i in 0..<data .businesses.count{
                 self.businessArray.append(data.businesses[i])
             }
             self.imageArray = downloadAllImagesFor(self.businessArray)
             self.performSegue(withIdentifier: "FinishedDownloadingSegue", sender: nil)
+            } else {
+                presentAlertWithClosuer(title: "Something went wrong", message: "Try Again", view: self, completion: { action in
+                    self.performSegue(withIdentifier: "NetworkingErrorSegue", sender: self)
+                })
+                
+            }
         }
         }
         print("latitude is \(lattitude) and longitude is \(longitude)")

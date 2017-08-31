@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 //https://api.yelp.com/v3/businesses/search?latitude=\(lattitude)&longitude=\(longitude)&term=food&radius=\(radius)
 //https://api.yelp.com/v3/businesses/search?latitude=34.1870&longitude=-118.3813&radius=16308
-func requestRestaurantsFromYelp(lattitude: String, longitude:String,radius:String, offset:String, completion: @escaping (YelpData) -> Void){
+func requestRestaurantsFromYelp(lattitude: String, longitude:String,radius:String, offset:String, completion: @escaping(YelpData?, Error?) -> Void) {
     print("radius is", radius)
     let search = "https://api.yelp.com/v3/businesses/search?latitude=\(lattitude)&longitude=\(longitude)&term=food&radius=\(radius)&limit=50&offset=\(offset)&sort_by=best_match"
     let url = URL(string: search)!
@@ -24,11 +24,12 @@ func requestRestaurantsFromYelp(lattitude: String, longitude:String,radius:Strin
         do {
             let decoded = try JSONDecoder().decode(YelpData.self, from: data) as YelpData
             DispatchQueue.main.async {
-                completion(decoded)
+                completion(decoded, nil)
             }
             
             //                print(decoded)
         } catch let jsonErr {
+            completion(nil, jsonErr)
             print("error serializing json:", jsonErr)
         }
         

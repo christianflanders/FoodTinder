@@ -180,7 +180,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Scanner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" translatesAutoresizingMaskIntoConstraints="NO" id="flw-Wl-c0j">
-                                <rect key="frame" x="33" y="65" width="309" height="70"/>
+                                <rect key="frame" x="33" y="65" width="309" height="82"/>
                                 <fontDescription key="fontDescription" name="BrushScriptStd" family="Brush Script Std" pointSize="70"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -569,11 +569,12 @@
                         <outlet property="activity" destination="p85-8z-yeE" id="A3F-zr-rkm"/>
                         <outlet property="workingLabel" destination="3c3-MK-DMM" id="MAL-BB-2oP"/>
                         <segue destination="0Fz-BH-AiH" kind="showDetail" identifier="FinishedDownloadingSegue" id="kgE-7N-vFU"/>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="NetworkingErrorSegue" id="HIJ-aC-7Wc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ukk-w9-kl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880.79999999999995" y="69.715142428785612"/>
+            <point key="canvasLocation" x="1007" y="-83"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kBF-TK-Pun">
@@ -603,4 +604,7 @@
         <image name="errorImage" width="608" height="405"/>
         <image name="extra_large_0" width="162" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HIJ-aC-7Wc"/>
+    </inferredMetricsTieBreakers>
 </document>

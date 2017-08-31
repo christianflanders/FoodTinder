@@ -187,13 +187,15 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
     }
     
     private func addMoreRestaurantsToList() {
-        requestRestaurantsFromYelp(lattitude:lattitude, longitude:longitude, radius: "10000", offset:"50") { data in
+        requestRestaurantsFromYelp(lattitude:lattitude, longitude:longitude, radius: "10000", offset:"50") { data,error in
             //            yelpData = data
             print("getting new restaurants")
             DispatchQueue.global().async {
+                if let data = data {
                 for i in 0..<data.businesses.count{
                     self.buisnessArray.append(data.businesses[i])
                     self.imageArray.append(downloadImagesForRestaurant(data.businesses[i]))
+                }
                 }
             }
         }
@@ -215,7 +217,6 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
             destination.restaurantID = currentRestaurant.id
             destination.restaurantImage = restaurantImageView.image
         }
-        
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
