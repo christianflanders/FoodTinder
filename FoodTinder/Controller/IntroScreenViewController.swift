@@ -76,7 +76,15 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     @IBAction func goButton(_ sender: Any) {
         if lattitude != "" && longitude != "" {
         performSegue(withIdentifier: "LocationEnteredSegue", sender: view)
-        } else {
+        } else if locationTextField.text?.count != 0{
+            print("text entered!")
+            let text = locationTextField.text
+            geocoder.geocodeAddressString(text!) { (placemarks, error) in
+                self.processResponse(withPlacemarks: placemarks, error:error)
+                self.performSegue(withIdentifier: "LocationEnteredSegue", sender: self.view)
+            }
+        }
+        else {
             presentAlert(title: "No location found", message: "No valid location found, please try again",view: self)
         }
     }

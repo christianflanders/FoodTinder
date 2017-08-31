@@ -41,11 +41,8 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureOnCard(gestureRecognizer:)))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panGesture(_:)))
-        tap.delegate = self
         pan.delegate = self
-        cardContainerView.addGestureRecognizer(tap)
         cardContainerView.addGestureRecognizer(pan)
  
     }
@@ -216,18 +213,11 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
             destination.restaurantURL = currentRestaurant.url
             destination.restaurantPhoneNum = currentRestaurant.phone
             destination.restaurantID = currentRestaurant.id
-        } else if segue.identifier == "CardPressedSegue" {
-            let destination = segue.destination as! RestaurantDetailViewController
-            destination.selectedRestaurant = buisnessArray[currentNum]
+            destination.restaurantImage = restaurantImageView.image
         }
-    }
-    @objc func tapGestureOnCard(gestureRecognizer:UIGestureRecognizer ) {
-        print("shit was tapped!"
-        )
-        performSegue(withIdentifier: "CardPressedSegue", sender: self)
-        
         
     }
+
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }

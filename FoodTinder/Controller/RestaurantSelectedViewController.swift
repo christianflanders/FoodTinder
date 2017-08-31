@@ -15,7 +15,9 @@ class RestaurantSelectionScreenViewController: UIViewController {
     
     //MARK: Variables
     //MARK: Outlets
+    @IBOutlet weak var restaurantImageView: UIImageView!
     
+    @IBOutlet weak var restaurantNameLabel: UILabel!
     //MARK: Weak Vars
     
     //MARK: Public Variables
@@ -25,12 +27,18 @@ class RestaurantSelectionScreenViewController: UIViewController {
     var restaurantURL = ""
     var restaurantPhoneNum = ""
     var restaurantID = ""
+    var restaurantImage: UIImage?
     //MARK: Private Variables
     
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let image = restaurantImage {
+        restaurantImageView.image = restaurantImage
+        } else {
+            restaurantImageView.image = #imageLiteral(resourceName: "errorImage")
+        }
+        restaurantNameLabel.text = restaurantName
         // Do any additional setup after loading the view.
     }
     

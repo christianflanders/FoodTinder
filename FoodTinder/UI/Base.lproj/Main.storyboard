@@ -357,6 +357,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W2X-80-pwG"/>
                     </view>
+                    <connections>
+                        <outlet property="restaurantImageView" destination="Qlm-zp-Wvn" id="MhM-KE-PCw"/>
+                        <outlet property="restaurantNameLabel" destination="NL8-A0-DXZ" id="z3q-lM-bBd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQW-72-ged" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="GXw-he-nL9"/>
