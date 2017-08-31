@@ -23,7 +23,7 @@ struct center : Codable{
 struct Buisness : Codable {
     var name:String
     var rating: Float
-    var price: String? 
+    var price: String?
 //    var location: [String?:String?]
     var phone:String
     var distance:Float
@@ -32,7 +32,7 @@ struct Buisness : Codable {
     var categories: [[String:String]]
     var coordinates: [String:Float]
     var location : location
-    var id: String
+    var id: String 
 }
 struct location : Codable {
     var address1: String?
@@ -41,9 +41,34 @@ struct location : Codable {
     var city: String
     var zip_code: String
     var country:String
-    var state:String?
+    var state:String? 
 
 }
+//struct NotCodableBuisness {
+//    var name:String = ""
+//    var rating: Float = 0.0
+//    var price: String? = ""
+//    //    var location: [String?:String?]
+//    var phone:String = ""
+//    var distance:Float = 0.0
+//    var url:String = ""
+//    var image_url: String = ""
+//    var categories =  [[String:String]]()
+//    var coordinates: [String:Float] = [" ": 0.0]
+//    var location : NotCodablelocation
+//    var id: String = ""
+//}
+//struct NotCodablelocation {
+//    var address1: String? = ""
+//    var address2: String? = ""
+//    var address3: String? = ""
+//    var city: String = ""
+//    var zip_code: String = ""
+//    var country:String = ""
+//    var state:String? = ""
+//    
+//}
+
 
 func ratingToImage(rating:Float)-> UIImage {
     var ratingImage = UIImage()

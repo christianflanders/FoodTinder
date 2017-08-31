@@ -14,7 +14,6 @@ class RestaurantSelectionScreenViewController: UIViewController {
     //MARK: Constants
     
     //MARK: Variables
-    
     //MARK: Outlets
     
     //MARK: Weak Vars

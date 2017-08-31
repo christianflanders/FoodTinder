@@ -144,9 +144,7 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
     
     
     //MARK: Instance Methods
-    func dislike(){
-        
-    }
+
 
     func updateDisplay() {
         let currentRestaurant = buisnessArray[currentNum]
@@ -166,9 +164,8 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
 //        restaurantPriceLabel.text = currentRestaurant.price
         if let price = currentRestaurant.price {
             restaurantPriceLabel.text = String(price)
-
         }
-        
+  
     }
 
     
@@ -220,7 +217,8 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
             destination.restaurantPhoneNum = currentRestaurant.phone
             destination.restaurantID = currentRestaurant.id
         } else if segue.identifier == "CardPressedSegue" {
-            //send info
+            let destination = segue.destination as! RestaurantDetailViewController
+            destination.selectedRestaurant = buisnessArray[currentNum]
         }
     }
     @objc func tapGestureOnCard(gestureRecognizer:UIGestureRecognizer ) {
