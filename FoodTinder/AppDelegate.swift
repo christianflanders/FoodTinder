@@ -16,9 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let colorOne = UIColor(red: 116/255, green: 213/255, blue: 217/255, alpha: 1.0)
-        let colorTwo = UIColor(red: 109/255, green: 198/255, blue: 203/255, alpha: 1.0)
 
-        var navigationBarAppearace = UINavigationBar.appearance()
+        let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = colorOne
         navigationBarAppearace.titleTextAttributes = [
             NSAttributedStringKey.font: UIFont(name: "BrushScriptStd", size: 40)!,

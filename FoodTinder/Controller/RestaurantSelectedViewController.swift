@@ -33,8 +33,8 @@ class RestaurantSelectionScreenViewController: UIViewController {
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let image = restaurantImage {
-        restaurantImageView.image = restaurantImage
+        if restaurantImage != nil{
+            restaurantImageView.image = restaurantImage
         } else {
             restaurantImageView.image = #imageLiteral(resourceName: "errorImage")
         }
@@ -47,7 +47,7 @@ class RestaurantSelectionScreenViewController: UIViewController {
         print(coordinates)
         print("Location decoded and sent" , restaurantLocation)
     }
-
+    
     //MARK: IBActions
     @IBAction func openInYelp(_ sender: UIButton) {
         print(restaurantID)
@@ -73,11 +73,11 @@ class RestaurantSelectionScreenViewController: UIViewController {
         mapItem.name = restaurantName
         mapItem.openInMaps(launchOptions: options)
     }
-        @IBAction func goBackButton(_ sender: UIButton) {
+    @IBAction func goBackButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func callButton(_ sender: UIButton) {
-            print(restaurantPhoneNum)
+        print(restaurantPhoneNum)
         let url = URL(string: "tel:\(restaurantPhoneNum)")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
         

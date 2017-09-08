@@ -77,13 +77,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		6B6BD8351F4A15B3004F6DBA /* YelpData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = YelpData;
-			sourceTree = "<group>";
-		};
 		6B7F47BB1F4649C300E4C5BE = {
 			isa = PBXGroup;
 			children = (
@@ -131,8 +124,6 @@
 				6BC5446F1F525458004C418A /* Alerts.swift */,
 				6BB272A61F47B681009FC345 /* Networking.swift */,
 				6BB272A41F47B4FD009FC345 /* YelpData.swift */,
-				6BE83B961F490F9F00718E5B /* Networking */,
-				6B6BD8351F4A15B3004F6DBA /* YelpData */,
 			);
 			path = "Data and Model";
 			sourceTree = "<group>";
@@ -149,13 +140,6 @@
 				6BE83B981F49101D00718E5B /* UIViewX.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		6BE83B961F490F9F00718E5B /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

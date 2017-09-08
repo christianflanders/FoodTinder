@@ -9,6 +9,7 @@
 import UIKit
 
 class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate {
+    
     //MARK: Enums
     
     //MARK: Constants
@@ -16,6 +17,7 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
     //MARK: Variables
     
     //MARK: Outlets
+    
     @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var cardContainerView: UIView!
     @IBOutlet weak var restaurantImageView: UIImageView!
@@ -141,8 +143,6 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
     
     
     //MARK: Instance Methods
-
-
     func updateDisplay() {
         let currentRestaurant = buisnessArray[currentNum]
         restaurantNameLabel.text = currentRestaurant.name
@@ -165,7 +165,6 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
   
     }
 
-    
     func getImage() -> UIImage{
         var image = UIImage()
         let url = URL(string:buisnessArray[currentNum].image_url)
@@ -201,7 +200,6 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
         }
     }
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RestaurantSelectedSegue" {
             print("segue identifier found")
