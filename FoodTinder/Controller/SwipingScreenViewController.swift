@@ -110,7 +110,7 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
             card.transform = CGAffineTransform(scaleX: 1, y:  1)
         })
     }
-    
+    //Detects a pan gesture and does all of the animation and actions
     @objc func panGesture(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         cardContainerView.center.x = sender.location(in: self.view).x

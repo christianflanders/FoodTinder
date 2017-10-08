@@ -16,7 +16,7 @@ class RestaurantSelectionScreenViewController: UIViewController {
     //MARK: Variables
     //MARK: Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
-    
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     //MARK: Weak Vars
     
@@ -27,6 +27,7 @@ class RestaurantSelectionScreenViewController: UIViewController {
     var restaurantURL = ""
     var restaurantPhoneNum = ""
     var restaurantID = ""
+
     var restaurantImage: UIImage?
     //MARK: Private Variables
     
@@ -34,7 +35,7 @@ class RestaurantSelectionScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if restaurantImage != nil{
-            restaurantImageView.image = restaurantImage
+            backgroundImage.image = restaurantImage
         } else {
             restaurantImageView.image = #imageLiteral(resourceName: "errorImage")
         }

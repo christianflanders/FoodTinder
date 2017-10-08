@@ -26,9 +26,12 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var distanceSlider: UISlider!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var getFromLocationButton: UIButton!
+    @IBOutlet weak var distanceStaticLabel: UILabel!
     
     //MARK: Weak Vars
-    
+
     //MARK: Public Variables
     
     //MARK: Private Variables
@@ -81,7 +84,9 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
             let text = locationTextField.text
             geocoder.geocodeAddressString(text!) { (placemarks, error) in
                 self.processResponse(withPlacemarks: placemarks, error:error)
+                self.hideAll()
                 self.performSegue(withIdentifier: "LocationEnteredSegue", sender: self.view)
+                
             }
         }
         else {
@@ -90,6 +95,16 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     }
     
     //MARK: Instance Methods
+    func hideAll(){
+        locationTextField.alpha = 0
+        distanceSlider.alpha = 0
+        distanceSlider.alpha = 0
+        distanceLabel.alpha = 0
+        goButton.alpha = 0
+        getFromLocationButton.alpha = 0
+        distanceStaticLabel.alpha = 0
+    }
+    //Called when the text field is finished typing, sends the contents to the geocoder
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         geocoder.geocodeAddressString(textField.text!) { (placemarks, error) in
             self.processResponse(withPlacemarks: placemarks, error:error)
@@ -98,11 +113,12 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
         return false
     }
     func animate(){
-        mainCard.transform = CGAffineTransform(scaleX: 0, y: 0)
-        UIViewX.animate(withDuration: 0.7, animations: {
-            self.mainCard.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            })
+//        mainCard.transform = CGAffineTransform(scaleX: 0, y: 0)
+//        UIViewX.animate(withDuration: 0.7, animations: {
+//            self.mainCard.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+//            })
     }
+    //User location to coordinates
     func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
         if let error = error {
             print("Unable to Forward Geocode Address (\(error))")
@@ -150,6 +166,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
         destinationVC.lattitude = lattitude
         destinationVC.distanceInMiles = distance
         locationManager.stopUpdatingLocation()
+        hideAll()
      }
  
     // MARK: Location Manager Delegate

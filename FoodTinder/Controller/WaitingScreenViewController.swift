@@ -38,6 +38,7 @@ class WaitingScreenViewController: UIViewController {
         super.viewDidLoad()
         activity.type = .orbit
         activity.startAnimating()
+        //Grabbing all of our data from Yelp
         DispatchQueue.global().async {
         requestRestaurantsFromYelp(lattitude:self.lattitude, longitude:self.longitude, radius: self.distanceInMiles, offset: "0") { data, error in
             if error == nil {

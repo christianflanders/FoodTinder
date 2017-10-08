@@ -12,13 +12,6 @@ import UIKit
 struct YelpData : Codable{
     var businesses : [Buisness]
 }
-struct region : Codable{
-    var center: center
-}
-struct center : Codable{
-    var latitude:Float
-    var longitude:Float
-}
 
 struct Buisness : Codable {
     var name:String
