@@ -10,57 +10,33 @@ import Foundation
 import UIKit
 
 struct YelpData : Codable{
-    var businesses : [Buisness]
+    let businesses : [Buisness]
 }
 
 struct Buisness : Codable {
-    var name:String
-    var rating: Float
-    var price: String?
+    let name:String
+    let rating: Float
+    let price: String?
 //    var location: [String?:String?]
-    var phone:String
-    var distance:Float
-    var url:String
-    var image_url: String
-    var categories: [[String:String]]
-    var coordinates: [String:Float]
-    var location : location
-    var id: String 
+    let phone:String
+    let distance:Float
+    let url:String
+    let image_url: String
+    let categories: [[String:String]]
+    let coordinates: [String:Float]
+    let location : location
+    let id: String
 }
 struct location : Codable {
-    var address1: String?
-    var address2: String?
-    var address3: String?
-    var city: String
-    var zip_code: String
-    var country:String
-    var state:String? 
+    let address1: String?
+    let address2: String?
+    let address3: String?
+    let city: String
+    let zip_code: String
+    let country:String
+    let state:String?
 
 }
-//struct NotCodableBuisness {
-//    var name:String = ""
-//    var rating: Float = 0.0
-//    var price: String? = ""
-//    //    var location: [String?:String?]
-//    var phone:String = ""
-//    var distance:Float = 0.0
-//    var url:String = ""
-//    var image_url: String = ""
-//    var categories =  [[String:String]]()
-//    var coordinates: [String:Float] = [" ": 0.0]
-//    var location : NotCodablelocation
-//    var id: String = ""
-//}
-//struct NotCodablelocation {
-//    var address1: String? = ""
-//    var address2: String? = ""
-//    var address3: String? = ""
-//    var city: String = ""
-//    var zip_code: String = ""
-//    var country:String = ""
-//    var state:String? = ""
-//    
-//}
 
 
 func ratingToImage(rating:Float)-> UIImage {
