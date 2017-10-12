@@ -49,7 +49,7 @@ class WaitingScreenViewController: UIViewController {
             self.imageArray = downloadAllImagesFor(self.businessArray)
             self.performSegue(withIdentifier: "FinishedDownloadingSegue", sender: nil)
             } else {
-                presentAlertWithClosuer(title: "Something went wrong", message: "Try Again", view: self, completion: { action in
+                presentAlertWithClosure(title: "Something went wrong", message: "Try Again", view: self, completion: { action in
                     self.performSegue(withIdentifier: "NetworkingErrorSegue", sender: self)
                 })
                 

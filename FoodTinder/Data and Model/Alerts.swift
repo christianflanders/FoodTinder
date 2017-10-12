@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+//Helper functions to easily create alerts
 
-func presentAlertWithClosuer(title: String, message:String, view: UIViewController, completion: @escaping (UIAlertAction) -> ()) {
+func presentAlertWithClosure(title: String, message:String, view: UIViewController, completion: @escaping (UIAlertAction) -> ()) {
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let action = UIAlertAction(title: title, style: .default, handler: completion)
     alert.addAction(action)

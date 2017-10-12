@@ -5,12 +5,11 @@
 //  Created by Christian Flanders on 8/18/17.
 //  Copyright © 2017 Christian Flanders. All rights reserved.
 //
-//34.1870
-//-118.3813
+
 import Foundation
 import UIKit
 
-
+//Asks yelps API for a list of restaurants based on our input parameters, parses the JSON, and returns them as a YelpData object.
 func requestRestaurantsFromYelp(lattitude: String, longitude:String,radius:String, offset:String, completion: @escaping(YelpData?, Error?) -> Void) {
     print("radius is", radius)
     let search = "https://api.yelp.com/v3/businesses/search?latitude=\(lattitude)&longitude=\(longitude)&term=food&radius=\(radius)&limit=50&offset=\(offset)&sort_by=best_match"
@@ -36,6 +35,7 @@ func requestRestaurantsFromYelp(lattitude: String, longitude:String,radius:Strin
         }.resume()
 }
 
+//Give it a list of buisness and it will download the images for that list and return them as an array.
 func downloadAllImagesFor(_ businessArray: [Buisness])-> [UIImage]{
     //dotry
     let errorImage = #imageLiteral(resourceName: "errorImage")
@@ -55,11 +55,11 @@ func downloadAllImagesFor(_ businessArray: [Buisness])-> [UIImage]{
         }
     }
     return allImages
-    }
+}
 
-    func downloadImagesForRestaurant(_ business: Buisness)-> UIImage{
+func downloadImagesForRestaurant(_ business: Buisness)-> UIImage{
     let errorImage = #imageLiteral(resourceName: "errorImage")
-        var image = UIImage()
+    var image = UIImage()
     if let url = URL(string:business.image_url) {
         let data = try? Data(contentsOf: url)
         image = UIImage(data: data!)!
@@ -67,5 +67,5 @@ func downloadAllImagesFor(_ businessArray: [Buisness])-> [UIImage]{
     } else {
         return errorImage
     }
-    }
+}
 
