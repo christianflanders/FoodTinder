@@ -13,7 +13,7 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
     //MARK: Enums
     
     //MARK: Constants
-
+    
     //MARK: Variables
     
     //MARK: Outlets
@@ -30,6 +30,7 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
     //MARK: Weak Vars
     
     //MARK: Public Variables
+    
     var originalPosition = CGPoint()
     var buisnessArray = [Buisness]()
     var imageArray = [UIImage]()
@@ -37,20 +38,24 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
     var longitude = ""
     
     //MARK: Private Variables
+    
     private var currentNum = 0
     private var divisor: CGFloat!
     
     //MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Creates the pan gesture recognizer to allow the card swiping, and assigns it to the card view
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panGesture(_:)))
         pan.delegate = self
         cardContainerView.addGestureRecognizer(pan)
- 
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         updateDisplay()
+        //Gives us the original position for the card so we can return to it.
         divisor = (view.frame.width / 2) / 0.61
         originalPosition = cardContainerView.center
         
@@ -62,20 +67,20 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
         cardContainerView.transform = CGAffineTransform(scaleX: 0, y: 0)
         UIView.animate(withDuration: 0.3, animations: {
             self.cardContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-    })
+        })
     }
-
+    
     
     @IBAction func backButton(_ sender: UIButton) {
         if currentNum != 0 {
             currentNum -= 1
         }
         updateDisplay()
-        }
+    }
     
     @IBAction func likeButton(_ sender: UIButton) {
         performSegue(withIdentifier: "RestaurantSelectedSegue", sender: self)
-
+        
     }
     
     
@@ -118,7 +123,7 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
         let xFromCenter = card.center.x - view.center.x
         let direction = sender.translation(in: view)
         card.transform = CGAffineTransform(rotationAngle: xFromCenter / divisor)
-  
+        
         if sender.state == UIGestureRecognizerState.ended {
             if direction.x < -80  {
                 dislikeRestaurantCard(card)
@@ -128,7 +133,7 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
                 })
             } else if direction.x > 80 {
                 UIView.animate(withDuration: 0.3, animations: {
-                    })
+                })
                 performSegue(withIdentifier: "RestaurantSelectedSegue", sender: self)
             } else {
             }
@@ -137,7 +142,7 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
                 card.transform = CGAffineTransform(rotationAngle: 0)
             })
             print(direction)
-
+            
         }
     }
     
@@ -155,16 +160,16 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
         //        let two = categories[1]["title"] ?? ""
         if imageArray.count != 0 {
             restaurantImageView.image = imageArray[currentNum]
-            }
+        }
         let categoriesDescription = "\(one)"
         restaurantCatagoriesLabel.text = categoriesDescription
-//        restaurantPriceLabel.text = currentRestaurant.price
+        //        restaurantPriceLabel.text = currentRestaurant.price
         if let price = currentRestaurant.price {
             restaurantPriceLabel.text = String(price)
         }
-  
+        
     }
-
+    
     func getImage() -> UIImage{
         var image = UIImage()
         let url = URL(string:buisnessArray[currentNum].image_url)
@@ -176,12 +181,12 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
     func downloadAllImages()-> [UIImage]{
         var allImages = [UIImage]()
         
-            for i in 0..<self.buisnessArray.count{
-                let url = URL(string:self.buisnessArray[i].image_url)
-                let data = try? Data(contentsOf: url!)
-                let image = UIImage(data: data!)!
-                allImages.append(image)
-            }
+        for i in 0..<self.buisnessArray.count{
+            let url = URL(string:self.buisnessArray[i].image_url)
+            let data = try? Data(contentsOf: url!)
+            let image = UIImage(data: data!)!
+            allImages.append(image)
+        }
         return allImages
     }
     
@@ -191,10 +196,10 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
             print("getting new restaurants")
             DispatchQueue.global().async {
                 if let data = data {
-                for i in 0..<data.businesses.count{
-                    self.buisnessArray.append(data.businesses[i])
-                    self.imageArray.append(downloadImagesForRestaurant(data.businesses[i]))
-                }
+                    for i in 0..<data.businesses.count{
+                        self.buisnessArray.append(data.businesses[i])
+                        self.imageArray.append(downloadImagesForRestaurant(data.businesses[i]))
+                    }
                 }
             }
         }
@@ -216,7 +221,7 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
             destination.restaurantImage = restaurantImageView.image
         }
     }
-
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }

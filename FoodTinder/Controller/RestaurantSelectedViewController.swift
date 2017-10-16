@@ -27,7 +27,7 @@ class RestaurantSelectionScreenViewController: UIViewController {
     var restaurantURL = ""
     var restaurantPhoneNum = ""
     var restaurantID = ""
-
+    
     var restaurantImage: UIImage?
     //MARK: Private Variables
     

@@ -31,7 +31,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     @IBOutlet weak var distanceStaticLabel: UILabel!
     
     //MARK: Weak Vars
-
+    
     //MARK: Public Variables
     
     //MARK: Private Variables
@@ -39,7 +39,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     private var lattitude = ""
     private var longitude = ""
     private var distance = ""
-
+    
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
     
     @IBAction func goButton(_ sender: Any) {
         if lattitude != "" && longitude != "" {
-        performSegue(withIdentifier: "LocationEnteredSegue", sender: view)
+            performSegue(withIdentifier: "LocationEnteredSegue", sender: view)
         } else if locationTextField.text?.count != 0{
             print("text entered!")
             let text = locationTextField.text
@@ -113,10 +113,10 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
         return false
     }
     func animate(){
-//        mainCard.transform = CGAffineTransform(scaleX: 0, y: 0)
-//        UIViewX.animate(withDuration: 0.7, animations: {
-//            self.mainCard.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-//            })
+        //        mainCard.transform = CGAffineTransform(scaleX: 0, y: 0)
+        //        UIViewX.animate(withDuration: 0.7, animations: {
+        //            self.mainCard.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        //            })
     }
     //User location to coordinates
     func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
@@ -139,7 +139,7 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
         }
     }
     
-
+    
     //MARK: TextField Stuff
     //When user enters a location, and presses the done button, 
     func locationToString(lat: Double, long: Double){
@@ -151,24 +151,24 @@ class IntroSceneViewController: UIViewController, CLLocationManagerDelegate, UIT
             let state = location?.administrativeArea ?? "state"
             let zip = location?.postalCode ?? "zipcode"
             self.locationTextField.text = "\(address), \(city), \(state), \(zip)"
-            }
+        }
         )
     }
     
     
     
     
-     // MARK: - Navigation
-     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! WaitingScreenViewController
         destinationVC.longitude = longitude
         destinationVC.lattitude = lattitude
         destinationVC.distanceInMiles = distance
         locationManager.stopUpdatingLocation()
         hideAll()
-     }
- 
+    }
+    
     // MARK: Location Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         presentAlert(title: "Something went wrong!", message: "Try again", view: self)
