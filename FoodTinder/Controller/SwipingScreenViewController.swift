@@ -48,8 +48,12 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
         super.viewDidLoad()
         //Creates the pan gesture recognizer to allow the card swiping, and assigns it to the card view
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panGesture(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapGesture(_:)))
         pan.delegate = self
+        tap.delegate = self
         cardContainerView.addGestureRecognizer(pan)
+        cardContainerView.addGestureRecognizer(tap)
+        
         
     }
     
@@ -203,6 +207,11 @@ class SwipingScreenViewController: UIViewController, UIGestureRecognizerDelegate
                 }
             }
         }
+    }
+    
+    @objc func tapGesture(_ sender: UITapGestureRecognizer){
+        performSegue(withIdentifier: "RestaurantSelectedSegue", sender: self)
+
     }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
