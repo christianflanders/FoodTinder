@@ -12,4 +12,4 @@ Uses the Yelp Fusion API.
 * Omit categories of restaurants based on swipes.
 * Autosugget restaurants based on your past choices by day and time.
 * More filtering options
-
+* tvOS App, maybe watchOS App?
